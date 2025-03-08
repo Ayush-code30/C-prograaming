@@ -23,4 +23,39 @@
       </metadata>
     </info>
   </bookmark>
+  <bookmark href="file:///home/kali/.ssh/id_ed25519.pub" added="2025-03-08T17:08:58.736771Z" modified="2025-03-08T17:21:14.079426Z" visited="2025-03-08T17:08:58.736771Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/vnd.ms-publisher"/>
+        <bookmark:applications>
+          <bookmark:application name="Thunar" exec="&apos;Thunar %u&apos;" modified="2025-03-08T17:21:14.079424Z" count="8"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/kali/.ssh/id_ed25519" added="2025-03-08T17:19:23.598054Z" modified="2025-03-08T17:20:01.920281Z" visited="2025-03-08T17:19:23.598054Z">
+    <desc>Language: ; Encoding: UTF-8; Cursor: 5:64;</desc>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/plain"/>
+        <bookmark:groups>
+          <bookmark:group>Mousepad</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="Thunar" exec="&apos;Thunar %u&apos;" modified="2025-03-08T17:19:23.598056Z" count="1"/>
+          <bookmark:application name="Mousepad" exec="&apos;mousepad %u&apos;" modified="2025-03-08T17:20:01.920278Z" count="2"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/kali/.ssh/.id_rsa.pub.swp" added="2025-03-08T17:20:23.254063Z" modified="2025-03-08T17:20:41.926951Z" visited="2025-03-08T17:20:23.254063Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="Thunar" exec="&apos;Thunar %u&apos;" modified="2025-03-08T17:20:41.926949Z" count="2"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
 </xbel>

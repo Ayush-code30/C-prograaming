@@ -1,0 +1,854 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; object-src 'none'; script-src resource: chrome:; connect-src https:; img-src https: data: blob: chrome:; style-src 'unsafe-inline';">
+    <meta name="color-scheme" content="light dark">
+    <title data-l10n-id="newtab-page-title"></title>
+    <link rel="icon" type="image/png" href="chrome://branding/content/icon32.png"/>
+    <link rel="localization" href="branding/brand.ftl" />
+    <link rel="localization" href="toolkit/branding/brandings.ftl" />
+    <link rel="localization" href="browser/newtab/newtab.ftl" />
+    <link rel="stylesheet" href="chrome://global/skin/design-system/tokens-brand.css">
+    <link rel="stylesheet" href="chrome://browser/content/contentSearchUI.css" />
+    <link rel="stylesheet" href="chrome://activity-stream/content/css/activity-stream.css" />
+  </head>
+  <!-- Cached: Sat, 08 Mar 2025 17:25:40 GMT -->
+  <body class="activity-stream">
+    <div id="header-asrouter-container" role="presentation"></div>
+    <div id="root">
+      <div><menu class="personalizeButtonWrapper"><span><button class="icon icon-settings personalize-button" data-l10n-id="newtab-personalize-icon-label"></button><div class="customize-menu" role="dialog" data-l10n-id="newtab-personalize-dialog-label"><div class="close-button-wrapper"><button class="close-button" data-l10n-id="newtab-custom-close-button"></button></div><div class="home-section"><div id="shortcuts-section" class="section"><moz-toggle id="shortcuts-toggle" pressed="true" onToggle="function() {
+    [native code]
+}" data-preference="feeds.topsites" data-eventSource="TOP_SITES" data-l10n-id="newtab-custom-shortcuts-toggle" data-l10n-attrs="label, description"></moz-toggle><div><div class="more-info-top-wrapper"><div class="more-information"><select id="row-selector" class="selector" name="row-count" data-preference="topSitesRows" aria-labelledby="custom-shortcuts-title"><option selected="" value="1" data-l10n-id="newtab-custom-row-selector" data-l10n-args="{&quot;num&quot;: 1}"></option><option value="2" data-l10n-id="newtab-custom-row-selector" data-l10n-args="{&quot;num&quot;: 2}"></option><option value="3" data-l10n-id="newtab-custom-row-selector" data-l10n-args="{&quot;num&quot;: 3}"></option><option value="4" data-l10n-id="newtab-custom-row-selector" data-l10n-args="{&quot;num&quot;: 4}"></option></select><div class="check-wrapper" role="presentation"><input type="checkbox" id="sponsored-shortcuts" class="sponsored-checkbox" checked="" data-preference="showSponsoredTopSites" data-eventSource="SPONSORED_TOP_SITES"/><label class="sponsored" for="sponsored-shortcuts" data-l10n-id="newtab-custom-sponsored-sites"></label></div></div></div></div></div><div id="recent-section" class="section"><label class="switch"><moz-toggle id="highlights-toggle" onToggle="function() {
+    [native code]
+}" data-preference="feeds.section.highlights" data-eventSource="HIGHLIGHTS" data-l10n-id="newtab-custom-recent-toggle" data-l10n-attrs="label, description"></moz-toggle></label></div><span class="divider" role="separator"></span><div><button id="settings-link" class="external-link" data-l10n-id="newtab-custom-settings"></button></div></div></div></span></menu><div class="outer-wrapper ds-outer-wrapper-breakpoint-override visible-logo"><main><div class="non-collapsible-section"><div class="search-wrapper"><div class="logo-and-wordmark"><div class="logo"></div><div class="wordmark"></div></div><div class="search-inner-wrapper"><button class="search-handoff-button" tabindex="-1"><div class="fake-textbox"></div><input type="search" class="fake-editable" tabindex="-1" aria-hidden="true"/><div class="fake-caret"></div></button></div></div></div><div class="body-wrapper on"><div class="discovery-stream ds-layout"><div class="ds-column ds-column-12"><div class="ds-column-grid"><div><div class="ds-top-sites"><section class="collapsible-section top-sites" data-section-id="topsites"><div class="section-top-bar"><h3 class="section-title-container " style="visibility:hidden"><span class="section-title"><span data-l10n-id="newtab-section-header-topsites"></span></span><span class="learn-more-link-wrapper"></span></h3></div><div><ul class="top-sites-list"><li class="top-site-outer"><div class="top-site-inner"><a class="top-site-button" href="https://www.kali.org/" tabindex="0" draggable="true" data-is-sponsored-link="false"><div class="tile" aria-hidden="true"><div class="icon-wrapper" data-fallback="k"><div></div><div class="top-site-icon default-icon" data-fallback="" style="background-image:url(data:image/png;base64,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)"></div></div></div><div class="title"><span dir="auto">kali</span><span class="sponsored-label" data-l10n-id="newtab-topsite-sponsored"></span></div></a><div><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;kali&quot;}" class="context-menu-button icon"></button></div><div class="topsite-impression-observer"></div></div></li><li class="top-site-outer"><div class="top-site-inner"><a class="top-site-button" href="https://www.youtube.com/" tabindex="0" draggable="true" data-is-sponsored-link="false"><div class="tile" aria-hidden="true"><div class="icon-wrapper" data-fallback="Y"><div class="top-site-icon rich-icon" style="background-image:url(chrome://activity-stream/content/data/content/tippytop/images/youtube-com@2x.png)"></div></div></div><div class="title"><span dir="auto">YouTube</span><span class="sponsored-label" data-l10n-id="newtab-topsite-sponsored"></span></div></a><div><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;YouTube&quot;}" class="context-menu-button icon"></button></div><div class="topsite-impression-observer"></div></div></li><li class="top-site-outer"><div class="top-site-inner"><a class="top-site-button" href="https://www.facebook.com/" tabindex="0" draggable="true" data-is-sponsored-link="false"><div class="tile" aria-hidden="true"><div class="icon-wrapper" data-fallback="F"><div class="top-site-icon rich-icon" style="background-image:url(chrome://activity-stream/content/data/content/tippytop/images/facebook-com@2x.png)"></div></div></div><div class="title"><span dir="auto">Facebook</span><span class="sponsored-label" data-l10n-id="newtab-topsite-sponsored"></span></div></a><div><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;Facebook&quot;}" class="context-menu-button icon"></button></div><div class="topsite-impression-observer"></div></div></li><li class="top-site-outer"><div class="top-site-inner"><a class="top-site-button" href="https://www.wikipedia.org/" tabindex="0" draggable="true" data-is-sponsored-link="false"><div class="tile" aria-hidden="true"><div class="icon-wrapper" data-fallback="W"><div class="top-site-icon rich-icon" style="background-image:url(chrome://activity-stream/content/data/content/tippytop/images/wikipedia-org@2x.png)"></div></div></div><div class="title"><span dir="auto">Wikipedia</span><span class="sponsored-label" data-l10n-id="newtab-topsite-sponsored"></span></div></a><div><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;Wikipedia&quot;}" class="context-menu-button icon"></button></div><div class="topsite-impression-observer"></div></div></li><li class="top-site-outer"><div class="top-site-inner"><a class="top-site-button" href="https://www.reddit.com/" tabindex="0" draggable="true" data-is-sponsored-link="false"><div class="tile" aria-hidden="true"><div class="icon-wrapper" data-fallback="R"><div class="top-site-icon rich-icon" style="background-image:url(chrome://activity-stream/content/data/content/tippytop/images/reddit-com@2x.png)"></div></div></div><div class="title"><span dir="auto">Reddit</span><span class="sponsored-label" data-l10n-id="newtab-topsite-sponsored"></span></div></a><div><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;Reddit&quot;}" class="context-menu-button icon"></button></div><div class="topsite-impression-observer"></div></div></li><li class="top-site-outer"><div class="top-site-inner"><a class="top-site-button" href="https://twitter.com/" tabindex="0" draggable="true" data-is-sponsored-link="false"><div class="tile" aria-hidden="true"><div class="icon-wrapper" data-fallback="T"><div class="top-site-icon rich-icon" style="background-image:url(chrome://activity-stream/content/data/content/tippytop/images/twitter-com@2x.png)"></div></div></div><div class="title"><span dir="auto">Twitter</span><span class="sponsored-label" data-l10n-id="newtab-topsite-sponsored"></span></div></a><div><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;Twitter&quot;}" class="context-menu-button icon"></button></div><div class="topsite-impression-observer"></div></div></li><li class="top-site-outer placeholder hide-for-narrow add-button"><div class="top-site-inner"><a class="top-site-button" tabindex="0" draggable="true" data-is-sponsored-link="false"><div class="tile" aria-hidden="true"><div class="icon-wrapper" data-fallback="n"><div class=""></div></div></div><div class="title"><span dir="auto" data-l10n-id="newtab-topsites-add-shortcut-label">newtab-topsites-add-shortcut-label</span><span class="sponsored-label" data-l10n-id="newtab-topsite-sponsored"></span></div></a><div class="topsite-impression-observer"></div></div></li></ul><div class="edit-topsites-wrapper"></div></div></section></div></div></div></div><style data-styles="[[null]]"></style></div><div class="discovery-stream ds-layout"><div class="ds-column ds-column-12"><div class="ds-column-grid"><div></div></div></div><style data-styles="[[null]]"></style></div></div></main><aside></aside></div></div>
+    </div>
+    <div id="footer-asrouter-container" role="presentation"></div>
+    <script src="about:home?jscache"></script>
+    <script async type="module" src="chrome://global/content/elements/moz-toggle.mjs"></script>
+  </body>
+</html>
+window.__FROM_STARTUP_CACHE__ = true;
+window.__STARTUP_STATE__ = {
+	"TopSites": {
+		"initialized": true,
+		"rows": [
+			{
+				"bookmarkGuid": "DstB-0pDsZ6p",
+				"frecency": 325,
+				"guid": "W1V7eBYZUzxm",
+				"lastVisitDate": 1741453831738,
+				"title": "Kali Linux | Penetration Testing and Ethical Hacking Linux Distribution",
+				"url": "https://www.kali.org/",
+				"type": "history",
+				"favicon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAQ30lEQVR4Xu1aB3SUVRb+kkky6Y30QkgzAQlIkS4sVVTcg1ioAkJEihRdQBCBAyJIKAIbVmQD0lFQEESKSBEiICVhQUwooQcSEoZU0vPvuzeZycxkyj8Q3T3qPScnc2b+8t737v3ud+97VviTm9WffP74C4C/PKAKAUkLiD+VV6gnqw2AtlP84cGgCfLkO3TogKeeegr79+/HxYsX9SPjDwuEjgcEBgZi+PDhaNWqFY4dO4Y1a9bgzp07f2gwtFdWEwYKhQI9e/bEuHHjUFJSgoSEBOzevRvl5eUmw2P3kDgppCQT3hW5nF6srCS9/+K7arqxEhfwNdV/0FxbdU3V7+r/NfdZStqV4ilpNoG4pAjA3xPG1vJkQ66twwetW7fG+++/jxYtWuDzzz/H8uXLkZGRoRlH4+CmiGvdA82QAxQVQSoohFVxMVBRDiv6U09Ua4IUdTUA1Hy2NggYAVkNVPXvskEQCwkbG8DJCXB1RZpdfTzx+TydOZuKbR0gYmJiMGXKFPTu3RtffvklFi9ejF9++YXH4mJji1iv+oh184WrwqZq5dgD9FbR4CoDtSau4z2GnyEbBPWF1taAjw9u1nsCoWsWaeYth9x0gIiOjsbs2bPx8ssvM2HGxcXh4MGD/BonawUGewRgrHcwXMXnWquvNbGaSZsBSQ9I62rvsRgA9Q2enkgM7opOCZN57nIA0H6XBozGjRtjxowZePXVV/HTTz9h5syZOHDgAF/rqbDFBO/6Agx/2Fpb6fCAZuIyVlntQeIRtfiAfntUKw4KhdP2LY8EAPrEdJN+SDmCvPJSfj+lz7lz5+KZZ55hAAgIAoQszM4BM/3C0N3FU3cCRkJBh/TENcJptYi0jkKBBmZnh2+eHISXV46yHMcr3YdI969eRYLqBjbkpKNIquDJvvbaaxwOISEh2LFjByZOnIgrV67wb884uWO2fziilQ4GSVF74r8LH4gx7Ynog16bp1oGwI+vTJN8zp8UDF/BK5NZXoLF99OwMy+Tk5uDgwOnzg8++ABKpRKffvoph0lubi5sxavGi7AY5xUEO72woFGoY1vfC3TIVI8P6DcC7FFsm28XvLprvmUApD7dR3pwPxvpZUWwEbcG2iqZ9c8X52LOvSs4W5zHY2nSpAmHxQsvvIDMzExMnTqVRZUkScILnLA4KALNHVxq2F+Gq2tnlBqwasLCUhBWunfCqP0L5QPwVd95Usqh9ZidlYoyqZLfZy0iO9zOES+6+uIl8TcpIwUnHuZgyZIlIJL8+eef8fbbb4sU7IrDhw/jzTff5LBQiNfGegZgqm8IHBVqkjRMdNqCylzmkAtCiVgIx9OnLSPBg+2HSs8fW49iEfNRUVGwt7fnmqGYRA+toPhzFKmvsLICXl5euHz5soiUCowdO5blddeuXYVOKmKS/OSTT1hVRghO+Cw4GjEOjkZ1AxOhtnAyRqAWiKQbgrbCkk5ZBsCx6B5Sh9T9FHTYuXMnu3dZWRlrAJLK9F1paVVmIJs0aRKTIsV/x44dGYCPP/5YELAdzpw5gyFDhuDChQuws7LGdL8GGOHlX836vz0f7Fc2QM/ErfIBeK5hV8kz/TJ2FNxBQWU5qFagyb377ruaCWdlZTH7JyYmsmdERERg/fr1/Pv58+dZSjdr1gxffPEFQkND2Rvo/hUrVvA1XV08EB8UCW+hKmtqCHmrX6MtqmS1OVvl0gojDi43C4BRerUR+rpPnz7YvHkzrEliyrClS5fyhIkPVq1axfeTbd++HbGxsVCpVPC3tcOa+g3RwsnZrJx+VD7IF2HpnpRkVgrz5D08PNh9w8PD4efnB29vb87ztJo0EUuNPOHDDz/E119/jTFjxmDRokWwtbXFrVu30L9/fxZQShESCwPD0d/Tx2Ds62SAR+CD1EolnjyTaBIAnjxVgNOnT2eyq2uj2KdVp8lv3boVvr6+zB+kIT777DN+3QivACGeGgj9wLRjmgjF9cYKL/2xf+sQhd5HNpgHoGXLlnj48CEz/sqVK5nZ69IoC3z00UesDwgEeh8ZccL48eMZkE7O7lgbEiW0hrqw0iqjjVWWer0E7THTyi53bYvxB5bJCwGK7w0bNrB7/la2d+9eDB06lEl18ODB/BoiUqo27927J1KkE7aENoIvk6NxTzClJNVjVwnQvZOTzfYDNORH9f+8efN+q7lrnksh0atXL64nKFVaiZmmpaVxV4qEU4idPb4SIISLcNQRRhbqg1NWHmhz8nujAOi0xIYNG8buKJflHxelu3fvolu3biyjKSyoliAZTXqDdEM94QFbQhuimaOzVt2gVS0yD5huxHzpEIMBR1YbBIAnT+ltwoQJzNANGjR43DlZfD9piR49enCGofToKZoX+fn5muYLccG20Cdr0iSHhImJCw9RE2iF+LzMvSMm/bDYMACE+HfffceK7X9pDx48YNenidN4SDQRIQ4YMIDTp5sovnaFN0Zjls+GSdEQH2SI+A8+W5P/1XMkNHj133nnHYwaNYrbXIMGDXqkPE/PycvLQ3Z2NpfGpBvIqyw1ks/du3fH9evXsW3bNm66kOym7hOpzUhRQxyPbgbR8tQBwXBTtQqkRBt/dDmxo5ZOVH+hiX9Kd9T1Jbkr10jWUgW4evVqTROE7iUN0bRpU3Tu3BkvvfQSnn76aSY4OZaTk8OcQI3XhQsXol+/fjh37hyeffZZLqS6Cem8ITQa9hQG+qFgICzWuTTHm4dXmAfg9ddfx7p16+SMka8hdUed4quiS0RGb3CxtkGpKDmpctS2yMhI5hdKe25ubmbfQfKYQEhOTuZriZDpPgKAQmSWfwjG+QSarRZLKivhnlxV/emb9pfsBeRytFpyrKCgANQlTk9PR7CtI8Z5RKCjoxfsxUApPjMqikWzJA8/PszC4cJs5IlCiowmQSFHf+YkdWFhIYgX6B4XFxe+n7iB0ibxwZno5iJDVLfijZDijUprNDx73DwA5P40GSpZ5Rh5CpW1EXbOWOPfivsBxvYESlGB3fmZ2Jh7CyklBfz4evXqcX+AuMdSrujSpQsOHTqEkaKMnhsYWr3DpEuK6qbq98ow9D6+2SQAvPqkxqiOl2vU+yM5G+sWhpEe4QabGoZK1cPCI5bdv4bUaiAo98fHx3NnWa6RNqA9TIUItcORTdGwuqliqKm62r0lxh6KNw0ApZtff/3VouKHylvq7ox2j8QbbmIVtISIuSYnJZ9v8jKwKDsN2RWlTI4E/vz5881iQL1Fup5abNSMae/shp1hTxosmgpE+et/znD804s0aZDcuVGjRlzqyjVaffKCfq4heNcjyrBCM1PJ5UvlWJZ9FRtFi506jcePH0ebNm1MDmHWrFn8XiJJKtaII5YGheN1T99a9UKKlT1aJx8ymno0AKxduxYjR47EjRs3OH/LMdoxJqkaZeeC9f5tDasyQtkACPqbHhPuXhAccY9b6TQOU0YAUZ+CQpY2bEm2Owv+OfxEU4Qpq+uFapG0yzkKAxPXmAdA/ULq5FJsyTHK/0FBQbwS8T4t0cqBdoBMa3JjTc541TX88/517glQ98iUtW3bFidOnMDGjRtZIb7yyiusEhvZO2JvRAycqXwWD5BESCZ4tMHkQ5+YBIDepRFCVJvTA+XanDlzuHESYOOA1X6txb6gXS0QTPJBNWAHCrIx5u55JsIjR46YfD15CDVOKC1S/5FUJy0adaJj6/kjjrKCmLKqvAzhF4zHv5oD1C9jEKgcfe+99+TOnw9QtG/fniu2aDtXLPFprgHBlDTV95R75cX427VjUIicThKYTqsYM1KJtN+wZcsWHD16FHSGgcQSK00hek5FNRcltBKnbT3R48wuk9JT/0dp4MCB3ASxxEg7UEySGgwUnjDbKwZNlO61y1MjfECDILAG3U7G6aIc1v6bNm1CcHCwyWHQvoO2ZH/++eexZ88e/Cs4En09vPGVW2O8dXSlZQC4u7tzHS5XDKlHSPU8qbOkpCRRpFhhmHsYhgt9YKNRZ7V3fvR7fSml+Rh4OwlFYnOFSmE6hEHSXE5PglIjlfA3b97ENL8QvO0diASf9ph+YIF8APyUblJGSS67FlVelhqVrdOmTeOBVwpXJC8gbwiyVXdyqkAw2uQUL7xSVoApYovtQkk+v556hfQ8OSKJ9iAphMl6uXlhV2622cpL54JYzxgpQXUeDRs25MrLUnmqBozOCZBEptBwFIXRP4RG6O0SYDZDVPECUCn2Hjfm3sZy1XXkinNGZETM1J6jDRdTRopy8uTJvPFSbfI8YPHglVL4vm8wLOsg7lcWcyeYlNajGqVG0vjkTWTdnXyFNzTmvr+51pV6uzy3sgzxIjVuyk1HuXBxaqOPGDGCt9x9xHkfY0aZgapO9YkVU0Bo0Fndc7YUkHwSu4tuYlneOY5BalbShsjjGBEqMTY1OVrai7j2aSrytF71Vi1ajG16XC8txEKhFr8XqZKM0h8pQZLipryUOs6U0cib9Uwzb82H75oOlxQZdNBBwkTVcVwoU+HFF1/kTc/HtZSUFG5k0A5QI6Ur4n2bw12cIzLHB/qeQucP5meliUyRy0Oik2vkqaakM5EjecKyZcvw7bff1gJCA8D39ftIlSVVu7u3ywswWnVENDUqeTOzb9++j4sBS2xqeF66dAkt7D2wwrcFbIQsVMe93JMhRKB7hGSeLQ5k3BPnlCgNUklN5GsuW9C7Sb6T0KKmKxkDsGDASinmgO5Kby1Mw6qCFI41CoW62BmiVhuxOpFjf9f6mOQZJZsP9OuJAsEPcVnXsCnnDsvY5557jvULha4po/MMtP+g9gYGYEmvOCn6lK78pDbyO6pEXCrL5Sapeqv7cV2Bao1OnTqxgvzYuwl6OIsKzqKTo7pNj735WZh09yIfzKDsRU1dYyqStAp1u2gMamJkAOZ0niG1/DWp1tyuledh7P2jKBcDpDYUKa26MKr4Ro8eDS+FEtsD28FJixQNnf8xV2BdLX2IobfO43ZZMcLCwhgE+q9tVGbTyt++fVszeU0ITOwwRep2uerYq76tK7iITYWXWZZSh9ZcD08OQERM7dq144pusFsDjPeI1DouK38nWFtQpZYUYuidVGSKLpO/vz8oA1Cnid5F1SVpA2qtq1e+1ocvvLtL7tbKWuOnA1FjVEdxszyfV40OS9eFnTx5ElTWKkQAbwloixDRVJWjDwxlDpXoKCWJQHrryk+a/gZJejqpRmWyKT2gyQKzQnpJLYolUIbWt9SyB4IPjsFaYY2zZ8/yCbC6sDfeeIP3ATs7+mCh0Ae1Gida3GCsskwXVWSKGPOoqzpdX0OnWwwqQs2XIzvPlCL/sx+RNu58cEnflgpxtEeIJNq2ooqrLoyKLtoroB7/v/1aorlIj/og6DdV1XzwUJDeZVE3ZCpdMO7yj8bkrhoIsw0Rns+othOkoNTjCFA4wdvaXlRyNUDkVpZiWPZBFIoe3oIFC/ioTF0YnRfat28f+rnUx8R6Ii2Khxo7/1MpuoY5Iv1liFVXif/Z/k/hg9NrzRY8psZZ6+a3ukyTvC6egrIwBw5WCuENCj4QSbZPeMCuoht1Me9az4h1C0cnJ6/q/n4VEZJxcSQ+l4pdpiLBR5L4QuUXjelJhvv8lg7OKHqx3WZIjrn3oRDsalMqDkOK8VQKRv1ZdQHpRdmoqD4tau6FtV6gPtsrnkf+pRC7SKFOPmjn9QQDrX096wNxUYU4jVouPLLEzQNxP8Q91orrj7dOH2YOjP/H3/8C4P9xVX7PMf3pPeC/ywovqOF7fVwAAAAASUVORK5CYII=",
+				"faviconLength": 4376,
+				"faviconRef": "",
+				"faviconSize": 64,
+				"smallFavicon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADX0lEQVRYR72XaYyNVxjHR0VbCdpKiWiIJW2HWoqQRqRoMkGQEDu1xBKE+EaICL6IEiLER2mssUfUmgzmUxn77kNFbREqFfte9fvdnDd53Zl7571m5p7kl/O+5z3nPP/7nOc859waBQUFZ6E1PIVncANuwhU4GbhPXS2lBrMuhQHQHGpmsKLIfbAHSuFdValRQFQ+56EQWkEb6AI/QZ00Y9d4HwXHqkJEXMBnwbgiRMNfwbeh/euYwek8r64qATOYyAlbZFmCdFtzaFic1lif926wF/5LKk4PbILhcBcMvluBh9SPoQH0gHbBK85tLPRPM/Ir7+vhTxgLV5OIiJbgUzq/DgM+of4FBgYjTcqZyCAcHcRHn51rHiyAJ+CP2l+RiHgMfEnnqTAJ3BHx8paXv+A8fAcdwsfL1CVg7ZY9AUPgd/BHjYd12UREAibSaRnUC511/xE4BEb7JXgJemcDjMgw6T3ad8HpMF9t6pGwNZOISEAxHbrC7mDgIPWbcgatpW1MrP0Fz4rVexqLiktk7vgRXkF30DtlSjwGfLZzpjKID9vDRwN1GrjGLo+eMW/oyWGQnjvu0Ga2fZQ+eTwGsthOfXKdTVIGaye4mGGAy6jbZ4JbOypzeVj0sQK+YeDtMHgzdaYYiM9fi5fr0Dg0PqduCv/GOyX1QE8GHQ4DZ1P/VpG7wne380r4Ibwfp14FBnKqJBXQmb4OtpgBzYRJizYmgKn7f1gDZt9UtkwqoC593WJGuvnAgDL4cikmNnfNgfigpAIcsw0Gh8ErqA2yXEWUEZyLACP6DETJylzvmfA3eGExuB7AP2DAJroz5CJA9V5c3AUe3dmKEX8OTGi63Phx/SvlgWhwex6WQBEk/QEX6LscNsIHGTbpBOWJb0ijYhqBR7YXlpbQC77I4B69Mg5M06lSGQEZbKSWxwvOfHD3pBc9YCLbUV0CIoNtefCsMIu6W1wCd5HBbDrvC8XV4YH4L/bsOAouiadhH9gJP4PX/8LqFqCYobAlqPJZr7grFDc5HwK0/Qf0C17w2Pae4KWlNF8COmLsVPCC1zl3gXeLonwJ0Lau7w0LYQH4n6NZPgV4NHvHLAGP91TJpwD/d3o18/pm4sq7AA26BT2W3Zb+6cmrB7Q3BWbB95A6E94D8PaieESHM0kAAAAASUVORK5CYII=",
+				"smallFaviconLength": 920,
+				"smallFaviconRef": "",
+				"smallFaviconSize": 32,
+				"screenshot": "moz-page-thumb://thumbnails/?url=https%3A%2F%2Fwww.kali.org%2F&revision=5687",
+				"hostname": "kali",
+				"typedBonus": true
+			},
+			{
+				"isDefault": true,
+				"url": "https://www.youtube.com/",
+				"hostname": "youtube",
+				"sendAttributionRequest": false,
+				"label": "YouTube",
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/youtube-com@2x.png",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/youtube-com.png",
+				"typedBonus": true
+			},
+			{
+				"isDefault": true,
+				"url": "https://www.facebook.com/",
+				"hostname": "facebook",
+				"sendAttributionRequest": false,
+				"label": "Facebook",
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/facebook-com@2x.png",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/facebook-com.ico",
+				"typedBonus": true
+			},
+			{
+				"isDefault": true,
+				"url": "https://www.wikipedia.org/",
+				"hostname": "wikipedia",
+				"sendAttributionRequest": false,
+				"label": "Wikipedia",
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/wikipedia-org@2x.png",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/wikipedia-org.ico",
+				"typedBonus": true
+			},
+			{
+				"isDefault": true,
+				"url": "https://www.reddit.com/",
+				"hostname": "reddit",
+				"sendAttributionRequest": false,
+				"label": "Reddit",
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/reddit-com@2x.png",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/reddit-com.png",
+				"typedBonus": true
+			},
+			{
+				"isDefault": true,
+				"url": "https://twitter.com/",
+				"hostname": "twitter",
+				"sendAttributionRequest": false,
+				"label": "Twitter",
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/twitter-com@2x.png",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/twitter-com.ico",
+				"typedBonus": true
+			}
+		],
+		"editForm": null,
+		"showSearchShortcutsForm": false,
+		"searchShortcuts": [
+			{
+				"keyword": "@google",
+				"shortURL": "google",
+				"url": "https://google.com",
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/google-com@2x.png",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/google-com.ico"
+			},
+			{
+				"keyword": "@bing",
+				"shortURL": "bing",
+				"url": "https://bing.com",
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/bing-com@2x.svg",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/bing-com.ico"
+			},
+			{
+				"keyword": "@duckduckgo",
+				"shortURL": "duckduckgo",
+				"url": "https://duckduckgo.com",
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/duckduckgo-com@2x.svg",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/duckduckgo-com.ico"
+			},
+			{
+				"keyword": "@wikipedia",
+				"shortURL": "wikipedia",
+				"url": "https://wikipedia.org",
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/wikipedia-org@2x.png",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/wikipedia-org.ico"
+			}
+		],
+		"sov": {
+			"ready": false,
+			"positions": []
+		},
+		"pref": {
+			"collapsed": false
+		}
+	},
+	"App": {
+		"initialized": true,
+		"locale": "en-US",
+		"isForStartupCache": true,
+		"customizeMenuVisible": false,
+		"links": [
+			{
+				"bookmarkGuid": "DstB-0pDsZ6p",
+				"frecency": 325,
+				"guid": "W1V7eBYZUzxm",
+				"lastVisitDate": 1741453831738,
+				"title": "Kali Linux | Penetration Testing and Ethical Hacking Linux Distribution",
+				"url": "https://www.kali.org/",
+				"type": "history",
+				"favicon": "data:image/png;base64,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",
+				"faviconLength": 4376,
+				"faviconRef": "",
+				"faviconSize": 64,
+				"smallFavicon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADX0lEQVRYR72XaYyNVxjHR0VbCdpKiWiIJW2HWoqQRqRoMkGQEDu1xBKE+EaICL6IEiLER2mssUfUmgzmUxn77kNFbREqFfte9fvdnDd53Zl7571m5p7kl/O+5z3nPP/7nOc859waBQUFZ6E1PIVncANuwhU4GbhPXS2lBrMuhQHQHGpmsKLIfbAHSuFdValRQFQ+56EQWkEb6AI/QZ00Y9d4HwXHqkJEXMBnwbgiRMNfwbeh/euYwek8r64qATOYyAlbZFmCdFtzaFic1lif926wF/5LKk4PbILhcBcMvluBh9SPoQH0gHbBK85tLPRPM/Ir7+vhTxgLV5OIiJbgUzq/DgM+of4FBgYjTcqZyCAcHcRHn51rHiyAJ+CP2l+RiHgMfEnnqTAJ3BHx8paXv+A8fAcdwsfL1CVg7ZY9AUPgd/BHjYd12UREAibSaRnUC511/xE4BEb7JXgJemcDjMgw6T3ad8HpMF9t6pGwNZOISEAxHbrC7mDgIPWbcgatpW1MrP0Fz4rVexqLiktk7vgRXkF30DtlSjwGfLZzpjKID9vDRwN1GrjGLo+eMW/oyWGQnjvu0Ga2fZQ+eTwGsthOfXKdTVIGaye4mGGAy6jbZ4JbOypzeVj0sQK+YeDtMHgzdaYYiM9fi5fr0Dg0PqduCv/GOyX1QE8GHQ4DZ1P/VpG7wne380r4Ibwfp14FBnKqJBXQmb4OtpgBzYRJizYmgKn7f1gDZt9UtkwqoC593WJGuvnAgDL4cikmNnfNgfigpAIcsw0Gh8ErqA2yXEWUEZyLACP6DETJylzvmfA3eGExuB7AP2DAJroz5CJA9V5c3AUe3dmKEX8OTGi63Phx/SvlgWhwex6WQBEk/QEX6LscNsIHGTbpBOWJb0ijYhqBR7YXlpbQC77I4B69Mg5M06lSGQEZbKSWxwvOfHD3pBc9YCLbUV0CIoNtefCsMIu6W1wCd5HBbDrvC8XV4YH4L/bsOAouiadhH9gJP4PX/8LqFqCYobAlqPJZr7grFDc5HwK0/Qf0C17w2Pae4KWlNF8COmLsVPCC1zl3gXeLonwJ0Lau7w0LYQH4n6NZPgV4NHvHLAGP91TJpwD/d3o18/pm4sq7AA26BT2W3Zb+6cmrB7Q3BWbB95A6E94D8PaieESHM0kAAAAASUVORK5CYII=",
+				"smallFaviconLength": 920,
+				"smallFaviconRef": "",
+				"smallFaviconSize": 32,
+				"screenshot": "moz-page-thumb://thumbnails/?url=https%3A%2F%2Fwww.kali.org%2F&revision=5687",
+				"hostname": "kali",
+				"typedBonus": true
+			},
+			{
+				"isDefault": true,
+				"url": "https://www.youtube.com/",
+				"hostname": "youtube",
+				"sendAttributionRequest": false,
+				"label": "YouTube",
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/youtube-com@2x.png",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/youtube-com.png",
+				"typedBonus": true
+			},
+			{
+				"isDefault": true,
+				"url": "https://www.facebook.com/",
+				"hostname": "facebook",
+				"sendAttributionRequest": false,
+				"label": "Facebook",
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/facebook-com@2x.png",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/facebook-com.ico",
+				"typedBonus": true
+			},
+			{
+				"isDefault": true,
+				"url": "https://www.wikipedia.org/",
+				"hostname": "wikipedia",
+				"sendAttributionRequest": false,
+				"label": "Wikipedia",
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/wikipedia-org@2x.png",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/wikipedia-org.ico",
+				"typedBonus": true
+			},
+			{
+				"isDefault": true,
+				"url": "https://www.reddit.com/",
+				"hostname": "reddit",
+				"sendAttributionRequest": false,
+				"label": "Reddit",
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/reddit-com@2x.png",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/reddit-com.png",
+				"typedBonus": true
+			},
+			{
+				"isDefault": true,
+				"url": "https://twitter.com/",
+				"hostname": "twitter",
+				"sendAttributionRequest": false,
+				"label": "Twitter",
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/twitter-com@2x.png",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/twitter-com.ico",
+				"typedBonus": true
+			}
+		],
+		"pref": {
+			"collapsed": false
+		}
+	},
+	"ASRouter": {
+		"initialized": false
+	},
+	"Prefs": {
+		"initialized": true,
+		"values": {
+			"default.sites": "https://www.youtube.com/,https://www.facebook.com/,https://www.wikipedia.org/,https://www.reddit.com/,https://www.amazon.com/,https://twitter.com/",
+			"feeds.section.topstories.options": "{\"api_key_pref\":\"extensions.pocket.oAuthConsumerKey\",\"hidden\":false,\"provider_icon\":\"chrome://global/skin/icons/pocket.svg\",\"provider_name\":\"Pocket\",\"read_more_endpoint\":\"https://getpocket.com/explore/trending?src=fx_new_tab\",\"stories_endpoint\":\"https://getpocket.cdn.mozilla.net/v3/firefox/global-recs?version=3&consumer_key=$apiKey&locale_lang=en-US&feed_variant=default_spocs_off\",\"stories_referrer\":\"https://getpocket.com/recommendations\",\"topics_endpoint\":\"https://getpocket.cdn.mozilla.net/v3/firefox/trending-topics?version=2&consumer_key=$apiKey&locale_lang=en-US\",\"show_spocs\":false}",
+			"feeds.topsites": true,
+			"hideTopSitesTitle": false,
+			"showSponsored": true,
+			"system.showSponsored": false,
+			"showSponsoredTopSites": true,
+			"system.showWeather": false,
+			"showWeather": true,
+			"weather.query": "",
+			"weather.locationSearchEnabled": false,
+			"weather.temperatureUnits": "f",
+			"weather.display": "simple",
+			"pocketCta": "{\"cta_button\":\"\",\"cta_text\":\"\",\"cta_url\":\"\",\"use_cta\":false}",
+			"showSearch": true,
+			"topSitesRows": 1,
+			"telemetry": true,
+			"telemetry.ut.events": false,
+			"telemetry.structuredIngestion.endpoint": "https://incoming.telemetry.mozilla.org/submit",
+			"section.highlights.includeVisited": true,
+			"section.highlights.includeBookmarks": true,
+			"section.highlights.includePocket": true,
+			"section.highlights.includeDownloads": true,
+			"section.highlights.rows": 1,
+			"section.topstories.rows": 1,
+			"sectionOrder": "topsites,topstories,highlights",
+			"newtabWallpapers.enabled": false,
+			"newtabWallpapers.v2.enabled": false,
+			"newtabWallpapers.highlightEnabled": false,
+			"newtabWallpapers.highlightDismissed": false,
+			"newtabWallpapers.highlightSeenCounter": 0,
+			"newtabWallpapers.highlightHeaderText": "",
+			"newtabWallpapers.highlightContentText": "",
+			"newtabWallpapers.highlightCtaText": "",
+			"newtabWallpapers.wallpaper-light": "",
+			"newtabWallpapers.wallpaper-dark": "",
+			"newtabWallpapers.wallpaper": "",
+			"improvesearch.noDefaultSearchTile": true,
+			"improvesearch.topSiteSearchShortcuts.searchEngines": "google",
+			"improvesearch.topSiteSearchShortcuts.havePinned": "",
+			"asrouter.devtoolsEnabled": false,
+			"asrouter.providers.onboarding": "{\"id\":\"onboarding\",\"type\":\"local\",\"localProvider\":\"OnboardingMessageProvider\",\"enabled\":true,\"exclude\":[]}",
+			"discoverystream.flight.blocks": "{}",
+			"discoverystream.config": "{\"api_key_pref\":\"extensions.pocket.oAuthConsumerKey\",\"collapsible\":true,\"enabled\":true}",
+			"discoverystream.endpoints": "https://getpocket.cdn.mozilla.net/,https://firefox-api-proxy.cdn.mozilla.net/,https://spocs.getpocket.com/",
+			"discoverystream.isCollectionDismissible": true,
+			"discoverystream.onboardingExperience.dismissed": false,
+			"discoverystream.region-basic-layout": false,
+			"discoverystream.spoc.impressions": "{}",
+			"discoverystream.endpointSpocsClear": "https://spocs.getpocket.com/user",
+			"discoverystream.rec.impressions": "{}",
+			"showRecentSaves": true,
+			"feeds.aboutpreferences": true,
+			"feeds.newtabinit": true,
+			"feeds.places": true,
+			"feeds.prefs": true,
+			"feeds.sections": true,
+			"feeds.section.highlights": false,
+			"feeds.system.topstories": false,
+			"feeds.systemtick": true,
+			"feeds.telemetry": true,
+			"feeds.favicon": true,
+			"feeds.system.topsites": true,
+			"feeds.recommendationprovider": true,
+			"feeds.discoverystreamfeed": true,
+			"feeds.wallpaperfeed": true,
+			"feeds.weatherfeed": true,
+			"isPrivateBrowsingEnabled": true,
+			"platform": "linux",
+			"region": "IN",
+			"fxa_endpoint": "https://accounts.firefox.com/",
+			"appUpdateChannel": "esr",
+			"improvesearch.topSiteSearchShortcuts": true,
+			"mayHaveSponsoredTopSites": true,
+			"improvesearch.handoffToAwesomebar": true,
+			"featureConfig": {
+				"customizationMenuEnabled": null,
+				"topSitesContileEnabled": true
+			},
+			"pocketConfig": {
+				"spocPositions": "1,5,7,11,18,20",
+				"spocTopsitesPositions": "2",
+				"contileTopsitesPositions": "0,1,2",
+				"spocAdTypes": "",
+				"spocZoneIds": "",
+				"spocTopsitesAdTypes": "",
+				"spocTopsitesZoneIds": "",
+				"spocTopsitesPlacementEnabled": true,
+				"spocSiteId": "",
+				"widgetPositions": "",
+				"hybridLayout": false,
+				"hideCardBackground": false,
+				"fourCardLayout": false,
+				"newFooterSection": false,
+				"saveToPocketCard": true,
+				"saveToPocketCardRegions": "",
+				"hideDescriptions": false,
+				"hideDescriptionsRegions": "",
+				"compactGrid": false,
+				"compactImages": false,
+				"imageGradient": false,
+				"titleLines": 3,
+				"descLines": 3,
+				"onboardingExperience": false,
+				"essentialReadsHeader": false,
+				"editorsPicksHeader": false,
+				"recentSavesEnabled": false,
+				"readTime": true,
+				"newSponsoredLabel": false,
+				"sendToPocket": true,
+				"recsPersonalized": false,
+				"spocsPersonalized": true,
+				"spocsCacheTimeout": null,
+				"ctaButtonSponsors": "",
+				"ctaButtonVariant": "",
+				"spocMessageVariant": "",
+				"regionStoriesConfig": "US,DE,CA,GB,IE,CH,AT,BE,IN,FR,IT,ES",
+				"regionBffConfig": "US,DE,CA,GB,IE,CH,AT,BE,IN,FR,IT,ES",
+				"regionStoriesBlock": "",
+				"localeListConfig": "",
+				"regionSpocsConfig": "US,CA,DE,GB,FR,IT,ES",
+				"regionWeatherConfig": "",
+				"topSitesContileSovEnabled": true,
+				"pocketFeedParameters": ""
+			},
+			"logowordmark.alwaysVisible": true,
+			"feeds.section.topstories": false,
+			"discoverystream.enabled": true,
+			"discoverystream.sponsored-collections.enabled": false,
+			"discoverystream.hardcoded-basic-layout": false,
+			"discoverystream.personalization.enabled": true,
+			"discoverystream.personalization.override": false,
+			"discoverystream.personalization.modelKeys": "nb_model_arts_and_entertainment, nb_model_autos_and_vehicles, nb_model_beauty_and_fitness, nb_model_blogging_resources_and_services, nb_model_books_and_literature, nb_model_business_and_industrial, nb_model_computers_and_electronics, nb_model_finance, nb_model_food_and_drink, nb_model_games, nb_model_health, nb_model_hobbies_and_leisure, nb_model_home_and_garden, nb_model_internet_and_telecom, nb_model_jobs_and_education, nb_model_law_and_government, nb_model_online_communities, nb_model_people_and_society, nb_model_pets_and_animals, nb_model_real_estate, nb_model_reference, nb_model_science, nb_model_shopping, nb_model_sports, nb_model_travel",
+			"discoverystream.spocs-endpoint": "",
+			"discoverystream.spocs-endpoint-query": "",
+			"newNewtabExperience.colors": "#0090ED,#FF4F5F,#2AC3A2,#FF7139,#A172FF,#FFA437,#FF2A8A"
+		}
+	},
+	"Dialog": {
+		"visible": false,
+		"data": {}
+	},
+	"Sections": [
+		{
+			"title": {
+				"id": "newtab-section-header-stories"
+			},
+			"rows": [],
+			"enabled": false,
+			"id": "topstories",
+			"pref": {
+				"titleString": {
+					"id": "home-prefs-recommended-by-header-generic"
+				},
+				"descString": {
+					"id": "home-prefs-recommended-by-description-generic"
+				},
+				"nestedPrefs": [],
+				"learnMore": {
+					"link": {
+						"href": "https://getpocket.com/firefox/new_tab_learn_more",
+						"id": "home-prefs-recommended-by-learn-more"
+					}
+				},
+				"collapsed": false,
+				"feed": "feeds.section.topstories"
+			},
+			"shouldHidePref": false,
+			"eventSource": "TOP_STORIES",
+			"icon": "chrome://global/skin/icons/pocket.svg",
+			"learnMore": {
+				"link": {
+					"href": "https://getpocket.com/firefox/new_tab_learn_more",
+					"message": {
+						"id": "newtab-pocket-learn-more"
+					}
+				}
+			},
+			"compactCards": false,
+			"rowsPref": "section.topstories.rows",
+			"maxRows": 4,
+			"availableLinkMenuOptions": [
+				"CheckBookmarkOrArchive",
+				"CheckSavedToPocket",
+				"Separator",
+				"OpenInNewWindow",
+				"OpenInPrivateWindow",
+				"Separator",
+				"BlockUrl"
+			],
+			"emptyState": {
+				"message": {
+					"id": "newtab-empty-section-topstories-generic"
+				},
+				"icon": "check"
+			},
+			"shouldSendImpressionStats": true,
+			"dedupeFrom": [
+				"highlights"
+			],
+			"options": {
+				"api_key_pref": "extensions.pocket.oAuthConsumerKey",
+				"hidden": false,
+				"provider_icon": "chrome://global/skin/icons/pocket.svg",
+				"provider_name": "Pocket",
+				"read_more_endpoint": "https://getpocket.com/explore/trending?src=fx_new_tab",
+				"stories_endpoint": "https://getpocket.cdn.mozilla.net/v3/firefox/global-recs?version=3&consumer_key=$apiKey&locale_lang=en-US&feed_variant=default_spocs_off",
+				"stories_referrer": "https://getpocket.com/recommendations",
+				"topics_endpoint": "https://getpocket.cdn.mozilla.net/v3/firefox/trending-topics?version=2&consumer_key=$apiKey&locale_lang=en-US",
+				"show_spocs": false
+			},
+			"contextMenuOptions": [
+				"CheckBookmarkOrArchive",
+				"CheckSavedToPocket",
+				"Separator",
+				"OpenInNewWindow",
+				"OpenInPrivateWindow",
+				"Separator",
+				"BlockUrl"
+			],
+			"initialized": false
+		},
+		{
+			"title": {
+				"id": "newtab-section-header-recent-activity"
+			},
+			"rows": [],
+			"enabled": false,
+			"id": "highlights",
+			"pref": {
+				"titleString": {
+					"id": "home-prefs-recent-activity-header"
+				},
+				"descString": {
+					"id": "home-prefs-recent-activity-description"
+				},
+				"nestedPrefs": [
+					{
+						"name": "section.highlights.includeVisited",
+						"titleString": "home-prefs-highlights-option-visited-pages"
+					},
+					{
+						"name": "section.highlights.includeBookmarks",
+						"titleString": "home-prefs-highlights-options-bookmarks"
+					},
+					{
+						"name": "section.highlights.includeDownloads",
+						"titleString": "home-prefs-highlights-option-most-recent-download"
+					},
+					{
+						"name": "section.highlights.includePocket",
+						"titleString": "home-prefs-highlights-option-saved-to-pocket",
+						"hidden": false
+					}
+				],
+				"collapsed": false,
+				"feed": "feeds.section.highlights"
+			},
+			"shouldHidePref": false,
+			"eventSource": "HIGHLIGHTS",
+			"icon": "chrome://global/skin/icons/highlights.svg",
+			"compactCards": true,
+			"rowsPref": "section.highlights.rows",
+			"maxRows": 4,
+			"emptyState": {
+				"message": {
+					"id": "newtab-empty-section-highlights"
+				},
+				"icon": "chrome://global/skin/icons/highlights.svg"
+			},
+			"shouldSendImpressionStats": false,
+			"options": {},
+			"initialized": false
+		}
+	],
+	"Pocket": {
+		"isUserLoggedIn": null,
+		"pocketCta": {},
+		"waitingForSpoc": true
+	},
+	"Personalization": {
+		"lastUpdated": null,
+		"initialized": false
+	},
+	"DiscoveryStream": {
+		"config": {
+			"api_key_pref": "extensions.pocket.oAuthConsumerKey",
+			"collapsible": true,
+			"enabled": true
+		},
+		"layout": [
+			{
+				"width": 12,
+				"components": [
+					{
+						"type": "TopSites",
+						"header": {
+							"title": {
+								"id": "newtab-section-header-topsites"
+							}
+						},
+						"placement": {
+							"name": "sponsored-topsites",
+							"ad_types": [
+								3120
+							],
+							"zone_ids": [
+								280143
+							]
+						},
+						"spocs": {
+							"probability": 1,
+							"prefs": [
+								"showSponsoredTopSites"
+							],
+							"positions": [
+								{
+									"index": 2
+								}
+							]
+						},
+						"properties": {}
+					},
+					{
+						"type": "Message",
+						"essentialReadsHeader": false,
+						"editorsPicksHeader": false,
+						"header": {
+							"title": {
+								"id": "newtab-section-header-stories"
+							},
+							"subtitle": "",
+							"link_text": {
+								"id": "newtab-pocket-learn-more"
+							},
+							"link_url": "https://getpocket.com/firefox/new_tab_learn_more",
+							"icon": "chrome://global/skin/icons/pocket.svg"
+						},
+						"properties": {
+							"spocMessageVariant": ""
+						},
+						"styles": {
+							".ds-message": "margin-bottom: -20px"
+						}
+					},
+					{
+						"type": "CardGrid",
+						"properties": {
+							"items": 21,
+							"hybridLayout": false,
+							"hideCardBackground": false,
+							"fourCardLayout": false,
+							"compactGrid": false,
+							"essentialReadsHeader": false,
+							"editorsPicksHeader": false,
+							"onboardingExperience": false,
+							"ctaButtonSponsors": [
+								""
+							],
+							"ctaButtonVariant": "",
+							"spocMessageVariant": ""
+						},
+						"widgets": {
+							"positions": [],
+							"data": [
+								{
+									"type": "TopicsWidget"
+								}
+							]
+						},
+						"cta_variant": "link",
+						"header": {
+							"title": ""
+						},
+						"placement": {
+							"name": "spocs",
+							"ad_types": [
+								3617
+							],
+							"zone_ids": [
+								217758,
+								217995
+							]
+						},
+						"feed": {
+							"embed_reference": null,
+							"url": "https://firefox-api-proxy.cdn.mozilla.net/desktop/v1/recommendations?locale=$locale&region=$region&count=30"
+						},
+						"spocs": {
+							"probability": 1,
+							"positions": [
+								{
+									"index": 1
+								},
+								{
+									"index": 5
+								},
+								{
+									"index": 7
+								},
+								{
+									"index": 11
+								},
+								{
+									"index": 18
+								},
+								{
+									"index": 20
+								}
+							]
+						}
+					},
+					{
+						"type": "Navigation",
+						"newFooterSection": false,
+						"properties": {
+							"alignment": "left-align",
+							"links": [
+								{
+									"name": "Self improvement",
+									"url": "https://getpocket.com/explore/self-improvement?utm_source=pocket-newtab"
+								},
+								{
+									"name": "Food",
+									"url": "https://getpocket.com/explore/food?utm_source=pocket-newtab"
+								},
+								{
+									"name": "Entertainment",
+									"url": "https://getpocket.com/explore/entertainment?utm_source=pocket-newtab"
+								},
+								{
+									"name": "Health & fitness",
+									"url": "https://getpocket.com/explore/health?utm_source=pocket-newtab"
+								},
+								{
+									"name": "Science",
+									"url": "https://getpocket.com/explore/science?utm_source=pocket-newtab"
+								},
+								{
+									"name": "More recommendations ‚Ä∫",
+									"url": "https://getpocket.com/explore?utm_source=pocket-newtab"
+								}
+							],
+							"extraLinks": [
+								{
+									"name": "Career",
+									"url": "https://getpocket.com/explore/career?utm_source=pocket-newtab"
+								},
+								{
+									"name": "Technology",
+									"url": "https://getpocket.com/explore/technology?utm_source=pocket-newtab"
+								}
+							],
+							"privacyNoticeURL": {
+								"url": "https://www.mozilla.org/privacy/firefox/#recommend-relevant-content",
+								"title": {
+									"id": "newtab-section-menu-privacy-notice"
+								}
+							}
+						},
+						"header": {
+							"title": {
+								"id": "newtab-pocket-read-more"
+							}
+						},
+						"styles": {
+							".ds-navigation": "margin-top: -10px;"
+						}
+					}
+				]
+			}
+		],
+		"isPrivacyInfoModalVisible": false,
+		"isCollectionDismissible": true,
+		"feeds": {
+			"data": {},
+			"loaded": false
+		},
+		"spocs": {
+			"spocs_endpoint": "https://spocs.getpocket.com/spocs",
+			"lastUpdated": 1741453831778,
+			"data": {
+				"settings": {
+					"feature_flags": {
+						"collections": false,
+						"spoc_v2": true
+					},
+					"spocsPerNewTabs": 1,
+					"domainAffinityParameterSets": {
+						"default": {
+							"combinedDomainFactor": 0.5,
+							"frequencyFactor": 0.5,
+							"itemScoreFactor": 1,
+							"multiDomainBoost": 0,
+							"perfectCombinedDomainScore": 2,
+							"perfectFrequencyVisits": 10,
+							"recencyFactor": 0.5
+						},
+						"fully-personalized": {
+							"combinedDomainFactor": 0.5,
+							"frequencyFactor": 0.5,
+							"itemScoreFactor": 0.01,
+							"multiDomainBoost": 0,
+							"perfectCombinedDomainScore": 2,
+							"perfectFrequencyVisits": 10,
+							"recencyFactor": 0.5
+						},
+						"fully-personalized-domains": {
+							"combinedDomainFactor": 0.5,
+							"frequencyFactor": 0.5,
+							"itemScoreFactor": 0.01,
+							"multiDomainBoost": 0,
+							"perfectCombinedDomainScore": 10,
+							"perfectFrequencyVisits": 1,
+							"recencyFactor": 0.5
+						}
+					},
+					"timeSegments": [
+						{
+							"id": "week-1",
+							"startTime": 432000,
+							"endTime": 0,
+							"weightPosition": 1
+						},
+						{
+							"id": "week-2",
+							"startTime": 864000,
+							"endTime": 432000,
+							"weightPosition": 1
+						},
+						{
+							"id": "week-3",
+							"startTime": 1296000,
+							"endTime": 864000,
+							"weightPosition": 1
+						},
+						{
+							"id": "week-4",
+							"startTime": 1728000,
+							"endTime": 1296000,
+							"weightPosition": 1
+						},
+						{
+							"id": "week-5",
+							"startTime": 2160000,
+							"endTime": 1728000,
+							"weightPosition": 1
+						},
+						{
+							"id": "week-6",
+							"startTime": 2592000,
+							"endTime": 2160000,
+							"weightPosition": 1
+						}
+					]
+				},
+				"sponsored-topsites": {
+					"title": "",
+					"context": "",
+					"items": []
+				}
+			},
+			"loaded": true,
+			"frequency_caps": [],
+			"blocked": [],
+			"placements": [
+				{
+					"name": "sponsored-topsites",
+					"ad_types": [
+						3120
+					],
+					"zone_ids": [
+						280143
+					]
+				}
+			]
+		},
+		"experimentData": {
+			"utmSource": "pocket-newtab"
+		},
+		"recentSavesData": [],
+		"isUserLoggedIn": false,
+		"recentSavesEnabled": false,
+		"pocketButtonEnabled": true,
+		"saveToPocketCard": true,
+		"hideDescriptions": false,
+		"compactImages": false,
+		"imageGradient": false,
+		"newSponsoredLabel": false,
+		"titleLines": 3,
+		"descLines": 3,
+		"readTime": true
+	},
+	"Search": {
+		"fakeFocus": false,
+		"hide": false
+	},
+	"Wallpapers": {
+		"wallpaperList": [],
+		"highlightSeenCounter": {
+			"value": 0
+		},
+		"categories": []
+	},
+	"Weather": {
+		"initialized": false,
+		"lastUpdated": null,
+		"query": "",
+		"suggestions": [],
+		"locationData": {
+			"city": "",
+			"adminArea": "",
+			"country": ""
+		},
+		"searchActive": false,
+		"locationSearchString": "",
+		"suggestedLocations": []
+	}
+};
+
+[=Ptù           gÃ}îGÚ•õˇˇˇˇ       :about:home alt-data 1;16033,script version 20241021193311   ◊¡

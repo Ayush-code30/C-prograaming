@@ -77,3 +77,23 @@ blueman-sendto 10.46.27 ERROR    blueman-sendto:57 __init__  : Error: No Adapter
 (polkit-mate-authentication-agent-1:1178): GLib-GIO-CRITICAL **: 10:57:45.952: g_task_return_boolean: assertion '!task->ever_returned' failed
 Error executing command as another user: Request dismissed
 virtual KPtyProcess::~KPtyProcess() the terminal process is still running, trying to stop it by SIGHUP
+
+(xfwm4:1052): xfwm4-CRITICAL **: 12:21:28.368: clientMoveToMonitorByDirectionTarget: assertion 'candidate_monitors != NULL' failed
+
+(xfwm4:1052): xfwm4-CRITICAL **: 12:21:28.370: clientMoveToMonitorByDirectionTarget: assertion 'candidate_monitors != NULL' failed
+
+(xfwm4:1052): xfwm4-CRITICAL **: 12:21:28.370: clientMoveToMonitorByDirectionTarget: assertion 'candidate_monitors != NULL' failed
+
+(xfwm4:1052): xfwm4-CRITICAL **: 12:21:28.370: clientMoveToMonitorByDirectionTarget: assertion 'candidate_monitors != NULL' failed
+
+(polkit-mate-authentication-agent-1:1178): GLib-GIO-CRITICAL **: 12:22:27.255: g_task_return_boolean: assertion '!task->ever_returned' failed
+Error executing command as another user: Request dismissed
+
+(polkit-mate-authentication-agent-1:1178): GLib-GIO-CRITICAL **: 12:22:30.883: g_task_return_boolean: assertion '!task->ever_returned' failed
+Error executing command as another user: Request dismissed
+virtual KPtyProcess::~KPtyProcess() the terminal process is still running, trying to stop it by SIGHUP
+
+(polkit-mate-authentication-agent-1:1178): GLib-GIO-CRITICAL **: 12:22:38.319: g_task_return_boolean: assertion '!task->ever_returned' failed
+Error executing command as another user: Request dismissed
+thunar-volman: Unsupported USB device type "usb".
+thunar-volman: Unsupported USB device type "usbhid".

@@ -1,0 +1,7 @@
+[Default Applications]
+application/vnd.ms-publisher=xfce4-about.desktop
+application/octet-stream=kali-autopsy.desktop
+
+[Added Associations]
+application/vnd.ms-publisher=xfce4-accessibility-settings.desktop;kali-www.desktop;xfce4-about.desktop;
+application/octet-stream=kali-autopsy.desktop;
