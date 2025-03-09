@@ -1,7 +1,7 @@
 [Default Applications]
-application/vnd.ms-publisher=xfce4-about.desktop
+application/vnd.ms-publisher=xfce4-clipman.desktop
 application/octet-stream=kali-autopsy.desktop
 
 [Added Associations]
-application/vnd.ms-publisher=xfce4-accessibility-settings.desktop;kali-www.desktop;xfce4-about.desktop;
+application/vnd.ms-publisher=nm-connection-editor.desktop;gcr-viewer.desktop;kali-www.desktop;firefox-esr.desktop;xfce4-accessibility-settings.desktop;xfce4-about.desktop;xfce4-clipman.desktop;
 application/octet-stream=kali-autopsy.desktop;

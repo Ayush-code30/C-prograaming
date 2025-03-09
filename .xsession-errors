@@ -97,3 +97,44 @@ virtual KPtyProcess::~KPtyProcess() the terminal process is still running, tryin
 Error executing command as another user: Request dismissed
 thunar-volman: Unsupported USB device type "usb".
 thunar-volman: Unsupported USB device type "usbhid".
+virtual KPtyProcess::~KPtyProcess() the terminal process is still running, trying to stop it by SIGHUP
+** Message: 13:20:57.382: Primary instance org.xfce.clipman already running
+
+(xfce4-clipman:92239): GLib-GIO-WARNING **: 13:21:02.533: Your application did not unregister from D-Bus before destruction. Consider using g_application_run().
+** Message: 13:37:35.536: Primary instance org.xfce.clipman already running
+
+(xfce4-clipman:100260): GLib-GIO-WARNING **: 13:37:38.579: Your application did not unregister from D-Bus before destruction. Consider using g_application_run().
+thunar-volman: Unsupported USB device type "usb".
+thunar-volman: Unsupported USB device type "usbhid".
+virtual KPtyProcess::~KPtyProcess() the terminal process is still running, trying to stop it by SIGHUP
+virtual KPtyProcess::~KPtyProcess() the terminal process is still running, trying to stop it by SIGHUP
+virtual KPtyProcess::~KPtyProcess() the terminal process is still running, trying to stop it by SIGHUP
+virtual KPtyProcess::~KPtyProcess() process didn't stop upon SIGHUP and will be SIGKILL-ed
+QProcess: Destroyed while process ("vim") is still running.
+virtual KPtyProcess::~KPtyProcess() the terminal process is still running, trying to stop it by SIGHUP
+** Message: 23:23:57.161: Primary instance org.xfce.clipman already running
+
+(xfce4-clipman:109958): GLib-GIO-WARNING **: 23:23:59.947: Your application did not unregister from D-Bus before destruction. Consider using g_application_run().
+** Message: 23:24:22.998: Primary instance org.xfce.clipman already running
+
+(xfce4-clipman:110190): GLib-GIO-WARNING **: 23:24:25.297: Your application did not unregister from D-Bus before destruction. Consider using g_application_run().
+** Message: 23:24:26.639: Primary instance org.xfce.clipman already running
+
+(xfce4-clipman:110230): GLib-GIO-WARNING **: 23:24:30.438: Your application did not unregister from D-Bus before destruction. Consider using g_application_run().
+** Message: 23:24:45.064: Primary instance org.xfce.clipman already running
+
+(xfce4-clipman:110392): GLib-GIO-WARNING **: 23:24:47.455: Your application did not unregister from D-Bus before destruction. Consider using g_application_run().
+virtual KPtyProcess::~KPtyProcess() the terminal process is still running, trying to stop it by SIGHUP
+virtual KPtyProcess::~KPtyProcess() the terminal process is still running, trying to stop it by SIGHUP
+
+(polkit-mate-authentication-agent-1:1178): GLib-GIO-CRITICAL **: 23:55:48.967: g_task_return_boolean: assertion '!task->ever_returned' failed
+Error executing command as another user: Request dismissed
+
+(Thunar:1098): thunar-WARNING **: 00:12:16.307: Content type loading failed for (null): Error when getting information for file “/home/kali/.month_number.c.swp”: No such file or directory
+
+(Thunar:1098): thunar-WARNING **: 00:13:37.238: Content type loading failed for cube.c~: Error when getting information for file “/home/kali/cube.c~”: No such file or directory
+
+(Thunar:1098): thunar-WARNING **: 00:14:45.248: Content type loading failed for natural~: Error when getting information for file “/home/kali/natural~”: No such file or directory
+
+(Thunar:1098): thunar-WARNING **: 00:43:37.376: Content type loading failed for (null): Error when getting information for file “/home/kali/.sum_of_series.c.swp”: No such file or directory
+virtual KPtyProcess::~KPtyProcess() the terminal process is still running, trying to stop it by SIGHUP

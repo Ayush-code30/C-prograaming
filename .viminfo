@@ -12,9 +12,13 @@
 ~h
 # Command Line History (newest to oldest):
 :wq
-|2,0,1741450069,,"wq"
+|2,0,1741499017,,"wq"
 :wq!
-|2,0,1741156624,,"wq!"
+|2,0,1741497461,,"wq!"
+:.!q
+|2,0,1741496098,,".!q"
+:WQ
+|2,0,1741495361,,"WQ"
 ::wq
 |2,0,1740196960,,":wq"
 :s
@@ -29,7 +33,143 @@
 # Debug Line History (newest to oldest):
 
 # Registers:
-"1	CHAR	0
+""1	CHAR	0
+	#include <stdio.h>
+	#include <math.h>
+	
+	int is_armstrong(int num) {
+	    int original = num, sum = 0, digits = 0, remainder;
+	    
+	    int temp = num;
+	    while (temp > 0) {
+	        temp /= 10;
+	        digits++;
+	    }
+	    
+	    temp = num;
+	    while (temp > 0) {
+	        remainder = temp % 10;
+	        sum += pow(remainder, digits);
+	        temp /= 10;
+	    }
+	    
+	    return (sum == original);
+	}
+	
+	// Function to check if a number is a Perfect number
+	int is_perfect(int num) {
+	    int sum = 0;
+	    for (int i = 1; i <= num / 2; i++) {
+	        if (num % i == 0) {
+	            sum += i;
+	        }
+	    }
+	    return (sum == num);
+	}
+	
+|3,1,1,0,33,0,1741498743,"#include <stdio.h>","#include <math.h>","","int is_armstrong(int num) {","    int original = num, sum = 0, digits = 0, remainder;","    ","    int temp = num;","    while (temp > 0) {","        temp /= 10;","        digits++;","    }","    ","    temp = num;","    while (temp > 0) {","        remainder = temp % 10;","        sum += pow(remainder, digits);","        temp /= 10;","    }","    ","    return (sum == original);","}","",>54
+|<"// Function to check if a number is a Perfect number","int is_perfect(int num) {","    int sum = 0;","    for (int i = 1; i <= num / 2; i++) {","        if (num % i == 0) {","            sum += i;","        }","    }","    return (sum == num);","}",""
+"2	CHAR	0
+	Write a C program that prompts the user to input a series of integers until the user 
+	stops by entering 0 using a do-while loop. Calculate and print the sum of all positive 
+	integers entered.
+|3,0,2,0,3,0,1741498485,"Write a C program that prompts the user to input a series of integers until the user ","stops by entering 0 using a do-while loop. Calculate and print the sum of all positive ","integers entered."
+"3	CHAR	0
+	#include <stdio.h>
+	#include <math.h>
+	
+	int main() {
+	    double principal, rate, time, compound_interest;
+	    char choice;
+	    
+	    do {
+	        printf("Enter principal amount: ");
+	        scanf("%lf", &principal);
+	        printf("Enter annual interest rate (in percentage): ");
+	        scanf("%lf", &rate);
+	        printf("Enter time period (in years): ");
+	        scanf("%lf", &time);
+	        
+	        compound_interest = principal * pow((1 + rate / 100), time) - principal;
+	        
+	        printf("Compound Interest: %.2lf\n", compound_interest);
+	        
+	        printf("Do you want to calculate again? (y/n): ");
+	        scanf(" %c", &choice);
+	        
+	    } while (choice == 'y' || choice == 'Y');
+	    
+	    return 0;
+	}
+	
+|3,0,3,0,27,0,1741498308,"#include <stdio.h>","#include <math.h>","","int main() {","    double principal, rate, time, compound_interest;","    char choice;","    ","    do {","        printf(\"Enter principal amount: \");","        scanf(\"%lf\", &principal);","        printf(\"Enter annual interest rate (in percentage): \");","        scanf(\"%lf\", &rate);","        printf(\"Enter time period (in years): \");","        scanf(\"%lf\", &time);","        ",>82
+|<"        compound_interest = principal * pow((1 + rate / 100), time) - principal;","        ","        printf(\"Compound Interest: %.2lf\\n\", compound_interest);","        ","        printf(\"Do you want to calculate again? (y/n): \");","        scanf(\" %c\", &choice);","        ","    } while (choice == 'y' || choice == 'Y');","    ","    return 0;","}",""
+"4	CHAR	0
+	include <stdio.h>
+	
+	int main() {
+	    int choice;
+	    double length, breadth, radius, base, height, area;
+	    const double PI = 3.14159;
+	    
+	    // Displaying menu
+	    printf("Menu:\n");
+	    printf("1. Area of Rectangle\n");
+	    printf("2. Area of Circle\n");
+	    printf("3. Area of Triangle\n");
+	    printf("Enter your choice (1-3): ");
+	    scanf("%d", &choice);
+	    
+	    // Performing the selected operation
+	    switch (choice) {
+	        case 1:
+	            printf("Enter length and breadth of the rectangle: ");
+	            scanf("%lf %lf", &length, &breadth);
+	            area = length * breadth;
+	            printf("Area of Rectangle: %.2lf\n", area);
+	            break;
+	        case 2:
+	            printf("Enter radius of the circle: ");
+	            scanf("%lf", &radius);
+	            area = PI * radius * radius;
+	            printf("Area of Circle: %.2lf\n", area);
+	            break;
+	        case 3:
+	            printf("Enter base and height of the triangle: ");
+	            scanf("%lf %lf", &base, &height);
+	            area = 0.5 * base * height;
+	            printf("Area of Triangle: %.2lf\n", area);
+	            break;
+	        default:
+	            printf("Invalid choice! Please enter a number between 1 and 3.\n");
+	    }
+	    
+	    return 0;
+	}
+	
+|3,0,4,0,42,0,1741497006,"include <stdio.h>","","int main() {","    int choice;","    double length, breadth, radius, base, height, area;","    const double PI = 3.14159;","    ","    // Displaying menu","    printf(\"Menu:\\n\");","    printf(\"1. Area of Rectangle\\n\");","    printf(\"2. Area of Circle\\n\");","    printf(\"3. Area of Triangle\\n\");","    printf(\"Enter your choice (1-3): \");","    scanf(\"%d\", &choice);","    ",>42
+|<"    // Performing the selected operation","    switch (choice) {","        case 1:","            printf(\"Enter length and breadth of the rectangle: \");","            scanf(\"%lf %lf\", &length, &breadth);","            area = length * breadth;","            printf(\"Area of Rectangle: %.2lf\\n\", area);","            break;","        case 2:","            printf(\"Enter radius of the circle: \");","            scanf(\"%lf\", &radius);","            area = PI * radius * radius;",>57
+|<"            printf(\"Area of Circle: %.2lf\\n\", area);","            break;","        case 3:","            printf(\"Enter base and height of the triangle: \");","            scanf(\"%lf %lf\", &base, &height);","            area = 0.5 * base * height;","            printf(\"Area of Triangle: %.2lf\\n\", area);","            break;","        default:","            printf(\"Invalid choice! Please enter a number between 1 and 3.\\n\");","    }","    ","    return 0;","}",""
+"5	CHAR	0
+	#include <stdio.h>
+	
+	int main() {
+	    int year;
+	    
+	   
+	    printf("Enter a year: ");
+	    scanf("%d", &year);r
+	    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+	        printf("%d is a leap year.\n", year);
+	    } else {
+	        printf("%d is not a leap year.\n", year);
+	    }
+	    
+	    return 0;
+	}
+	
+|3,0,5,0,17,0,1741495984,"#include <stdio.h>","","int main() {","    int year;","    ","   ","    printf(\"Enter a year: \");","    scanf(\"%d\", &year);r","    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {","        printf(\"%d is a leap year.\\n\", year);","    } else {","        printf(\"%d is not a leap year.\\n\", year);","    }","    ","    return 0;","}",""
+"6	CHAR	0
 					    printf("\nThanks for Playing!\n");
 					    return 0;
 	}#include <stdio.h>
@@ -49,9 +189,9 @@
 							        scanf("%d", &guess);
 								        no_of_guess++;
 	
-|3,0,1,0,19,0,1741447986,"				    printf(\"\\nThanks for Playing!\\n\");","				    return 0;","}#include <stdio.h>","#include <stdlib.h>","#include <time.h>","","int main() {","	    int random, guess;","	        int no_of_guess = 0;","		    srand(time(NULL));","","		        printf(\"Welcome to the world of Guessing Number\\n\");","			    random = rand() % 100 + 1;","","			        do {",>82
+|3,0,6,0,19,0,1741447986,"				    printf(\"\\nThanks for Playing!\\n\");","				    return 0;","}#include <stdio.h>","#include <stdlib.h>","#include <time.h>","","int main() {","	    int random, guess;","	        int no_of_guess = 0;","		    srand(time(NULL));","","		        printf(\"Welcome to the world of Guessing Number\\n\");","			    random = rand() % 100 + 1;","","			        do {",>82
 |<"					        printf(\"\\nPlease enter your Guess Number between (1 to 100): \");","						        scanf(\"%d\", &guess);","							        no_of_guess++;",""
-"2	CHAR	0
+"7	CHAR	0
 	#include <stdio.h>
 	#include <stdlib.h>
 	#include <time.h>
@@ -102,11 +242,11 @@
 	            printf("Guess a smaller Number\n");
 	        } else {
 	            printf("Congratulations!!! You have successfully guessed the Number in %d attempts", no_of_guess);
-|3,0,2,0,50,0,1741447982,"#include <stdio.h>","#include <stdlib.h>","#include <time.h>","","int main() {","    int random, guess;","    int no_of_guess = 0;","    srand(time(NULL));","","    printf(\"Welcome to the world of Guessing Number\\n\");","    random = rand() % 100 + 1;","","    do {","        printf(\"\\nPlease enter your Guess Number between (1 to 100): \");","        scanf(\"%d\", &guess);","        no_of_guess++;","",>31
+|3,0,7,0,50,0,1741447982,"#include <stdio.h>","#include <stdlib.h>","#include <time.h>","","int main() {","    int random, guess;","    int no_of_guess = 0;","    srand(time(NULL));","","    printf(\"Welcome to the world of Guessing Number\\n\");","    random = rand() % 100 + 1;","","    do {","        printf(\"\\nPlease enter your Guess Number between (1 to 100): \");","        scanf(\"%d\", &guess);","        no_of_guess++;","",>31
 |<"        if (guess < random) {","            printf(\"Guess a larger Number\\n\");","        } else if (guess > random) {","            printf(\"Guess a smaller Number\\n\");","        } else {","            printf(\"Congratulations!!! You have successfully guessed the Number in %d attempts\", no_of_guess);","        }","    } while (guess != random);","","    printf(\"\\nThanks for Playing!\\n\");","    return 0;#include <stdio.h>","#include <stdlib.h>","#include <time.h>","",>14
 |<"int main() {","    int random, guess;","    int no_of_guess = 0;","    srand(time(NULL));","","    printf(\"Welcome to the world of Guessing Number\\n\");","    random = rand() % 100 + 1;","","    do {","        printf(\"\\nPlease enter your Guess Number between (1 to 100): \");","        scanf(\"%d\", &guess);","        no_of_guess++;","","        if (guess < random) {","            printf(\"Guess a larger Number\\n\");","        } else if (guess > random) {",>52
 |<"            printf(\"Guess a smaller Number\\n\");","        } else {","            printf(\"Congratulations!!! You have successfully guessed the Number in %d attempts\", no_of_guess);"
-"3	CHAR	0
+"8	CHAR	0
 	
 									        if (guess < random) {
 											            printf("Guess a larger Number\n");
@@ -142,328 +282,360 @@
 														                printf("Guess a smaller Number\n");
 																        } else {
 																		            printf("Congrat
-|3,0,3,0,35,0,1741447969,"","								        if (guess < random) {","										            printf(\"Guess a larger Number\\n\");","											            } else if (guess > random) {","													                printf(\"Guess a smaller Number\\n\");","															        } else {","																	            printf(\"Congratulations!!! You have successfully guessed the Number in %d attempts\", no_of_guess);","																		            }",>41
+|3,0,8,0,35,0,1741447969,"","								        if (guess < random) {","										            printf(\"Guess a larger Number\\n\");","											            } else if (guess > random) {","													                printf(\"Guess a smaller Number\\n\");","															        } else {","																	            printf(\"Congratulations!!! You have successfully guessed the Number in %d attempts\", no_of_guess);","																		            }",>41
 |<"									    } while (guess != random);","","				    printf(\"\\nThanks for Playing!\\n\");","				    return 0;","}#include <stdio.h>","#include <stdlib.h>","#include <time.h>","","int main() {","	    int random, guess;","	        int no_of_guess = 0;","		    srand(time(NULL));","","		        printf(\"Welcome to the world of Guessing Number\\n\");","			    random = rand() % 100 + 1;","","			        do {",>82
 |<"					        printf(\"\\nPlease enter your Guess Number between (1 to 100): \");","						        scanf(\"%d\", &guess);","							        no_of_guess++;","","								        if (guess < random) {","										            printf(\"Guess a larger Number\\n\");","											            } else if (guess > random) {","													                printf(\"Guess a smaller Number\\n\");","															        } else {","																	            printf(\"Congrat"
-"4	CHAR	0
+"9	CHAR	0
 	
 	
-|3,0,4,0,2,0,1740210908,"",""
-"5	CHAR	0
-	copy and paste keys in kali linux	scanf(
-	
-|3,0,5,0,2,0,1740206059,"copy and paste keys in kali linux	scanf(",""
-"6	CHAR	0
-	int a ch;
-		printf("enter  character");
-	
-|3,0,6,0,3,0,1740206049,"int a ch;","	printf(\"enter  character\");",""
-"7	CHAR	0
-	int a ch;
-		printf("enter  character");
-	
-|3,0,7,0,3,0,1740206049,"int a ch;","	printf(\"enter  character\");",""
-""-	CHAR	0
+|3,0,9,0,2,0,1740210908,"",""
+"-	CHAR	0
 	originalNu
-|3,1,36,0,1,0,1741156341,"originalNu"
+|3,0,36,0,1,0,1741156341,"originalNu"
 
 # File marks:
-'0  6  0  ~/2.c
-|4,48,6,0,1741450069,"~/2.c"
-'1  1  0  ~/1.c
-|4,49,1,0,1741450016,"~/1.c"
-'2  7  32  ~/palindrome.c
-|4,50,7,32,1741448536,"~/palindrome.c"
-'3  1  0  ~/l.c
-|4,51,1,0,1741448534,"~/l.c"
-'4  1  0  ~/1.c
-|4,52,1,0,1741447633,"~/1.c"
-'5  26  0  ~/palindrome.c
-|4,53,26,0,1741156661,"~/palindrome.c"
-'6  26  0  ~/palindrome.c
-|4,54,26,0,1741156624,"~/palindrome.c"
-'7  16  44  ~/harmonic.c
-|4,55,16,44,1741094251,"~/harmonic.c"
-'8  14  16  ~/harmonic.c
-|4,56,14,16,1741094169,"~/harmonic.c"
-'9  14  16  ~/harmonic.c
-|4,57,14,16,1741094169,"~/harmonic.c"
+'0  10  0  ~/sum_of_series.c
+|4,48,10,0,1741499017,"~/sum_of_series.c"
+'1  2  0  ~/square.c
+|4,49,2,0,1741498954,"~/square.c"
+'2  2  0  ~/even_odd_function.c
+|4,50,2,0,1741498867,"~/even_odd_function.c"
+'3  27  0  ~/armstrong.c
+|4,51,27,0,1741498785,"~/armstrong.c"
+'4  2  0  ~/prime_number.c
+|4,52,2,0,1741498636,"~/prime_number.c"
+'5  19  0  ~/series.c
+|4,53,19,0,1741498497,"~/series.c"
+'6  26  5  ~/compound_interest.c
+|4,54,26,5,1741498339,"~/compound_interest.c"
+'7  1  7  ~/compound_interest.c
+|4,55,1,7,1741498167,"~/compound_interest.c"
+'8  19  7  ~/compound_interest.c
+|4,56,19,7,1741498167,"~/compound_interest.c"
+'9  12  18  ~/average.c
+|4,57,12,18,1741497766,"~/average.c"
 
 # Jumplist (newest first):
--'  6  0  ~/2.c
-|4,39,6,0,1741450069,"~/2.c"
--'  4  21  ~/2.c
-|4,39,4,21,1741450027,"~/2.c"
--'  1  0  ~/1.c
-|4,39,1,0,1741450016,"~/1.c"
--'  1  0  ~/1.c
-|4,39,1,0,1741450016,"~/1.c"
--'  7  32  ~/palindrome.c
-|4,39,7,32,1741448536,"~/palindrome.c"
--'  7  32  ~/palindrome.c
-|4,39,7,32,1741448536,"~/palindrome.c"
--'  7  32  ~/palindrome.c
-|4,39,7,32,1741448536,"~/palindrome.c"
--'  7  32  ~/palindrome.c
-|4,39,7,32,1741448536,"~/palindrome.c"
--'  1  0  ~/l.c
-|4,39,1,0,1741448534,"~/l.c"
--'  1  0  ~/l.c
-|4,39,1,0,1741448534,"~/l.c"
--'  1  0  ~/l.c
-|4,39,1,0,1741448534,"~/l.c"
--'  1  0  ~/l.c
-|4,39,1,0,1741448534,"~/l.c"
--'  1  0  ~/1.c
-|4,39,1,0,1741447633,"~/1.c"
--'  1  0  ~/1.c
-|4,39,1,0,1741447633,"~/1.c"
--'  1  0  ~/1.c
-|4,39,1,0,1741447633,"~/1.c"
--'  1  0  ~/1.c
-|4,39,1,0,1741447633,"~/1.c"
--'  26  0  ~/palindrome.c
-|4,39,26,0,1741156661,"~/palindrome.c"
--'  26  0  ~/palindrome.c
-|4,39,26,0,1741156661,"~/palindrome.c"
--'  26  0  ~/palindrome.c
-|4,39,26,0,1741156661,"~/palindrome.c"
--'  26  0  ~/palindrome.c
-|4,39,26,0,1741156661,"~/palindrome.c"
--'  26  0  ~/palindrome.c
-|4,39,26,0,1741156661,"~/palindrome.c"
--'  26  0  ~/palindrome.c
-|4,39,26,0,1741156661,"~/palindrome.c"
--'  26  0  ~/palindrome.c
-|4,39,26,0,1741156661,"~/palindrome.c"
--'  26  0  ~/palindrome.c
-|4,39,26,0,1741156661,"~/palindrome.c"
--'  26  0  ~/palindrome.c
-|4,39,26,0,1741156661,"~/palindrome.c"
--'  26  0  ~/palindrome.c
-|4,39,26,0,1741156661,"~/palindrome.c"
--'  26  0  ~/palindrome.c
-|4,39,26,0,1741156661,"~/palindrome.c"
--'  26  0  ~/palindrome.c
-|4,39,26,0,1741156661,"~/palindrome.c"
--'  26  0  ~/palindrome.c
-|4,39,26,0,1741156661,"~/palindrome.c"
--'  26  0  ~/palindrome.c
-|4,39,26,0,1741156661,"~/palindrome.c"
--'  26  0  ~/palindrome.c
-|4,39,26,0,1741156661,"~/palindrome.c"
--'  26  0  ~/palindrome.c
-|4,39,26,0,1741156661,"~/palindrome.c"
--'  26  0  ~/palindrome.c
-|4,39,26,0,1741156624,"~/palindrome.c"
--'  26  0  ~/palindrome.c
-|4,39,26,0,1741156624,"~/palindrome.c"
--'  26  0  ~/palindrome.c
-|4,39,26,0,1741156624,"~/palindrome.c"
--'  26  0  ~/palindrome.c
-|4,39,26,0,1741156624,"~/palindrome.c"
--'  26  0  ~/palindrome.c
-|4,39,26,0,1741156624,"~/palindrome.c"
--'  26  0  ~/palindrome.c
-|4,39,26,0,1741156624,"~/palindrome.c"
--'  26  0  ~/palindrome.c
-|4,39,26,0,1741156624,"~/palindrome.c"
--'  26  0  ~/palindrome.c
-|4,39,26,0,1741156624,"~/palindrome.c"
--'  26  0  ~/palindrome.c
-|4,39,26,0,1741156624,"~/palindrome.c"
--'  26  0  ~/palindrome.c
-|4,39,26,0,1741156624,"~/palindrome.c"
--'  26  0  ~/palindrome.c
-|4,39,26,0,1741156624,"~/palindrome.c"
--'  26  0  ~/palindrome.c
-|4,39,26,0,1741156624,"~/palindrome.c"
--'  26  0  ~/palindrome.c
-|4,39,26,0,1741156624,"~/palindrome.c"
--'  26  0  ~/palindrome.c
-|4,39,26,0,1741156624,"~/palindrome.c"
--'  26  0  ~/palindrome.c
-|4,39,26,0,1741156624,"~/palindrome.c"
--'  26  0  ~/palindrome.c
-|4,39,26,0,1741156624,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156502,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156502,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156502,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156502,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156502,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156502,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156502,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156502,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156502,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156502,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156502,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156502,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156502,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156502,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156502,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156502,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156502,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156502,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156502,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156502,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156502,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156502,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156502,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156502,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156502,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156502,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156502,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156502,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156502,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156502,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156502,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156502,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156148,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156148,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156148,"~/palindrome.c"
--'  1  0  ~/palindrome.c
-|4,39,1,0,1741156148,"~/palindrome.c"
--'  16  44  ~/harmonic.c
-|4,39,16,44,1741094251,"~/harmonic.c"
--'  16  44  ~/harmonic.c
-|4,39,16,44,1741094251,"~/harmonic.c"
--'  16  44  ~/harmonic.c
-|4,39,16,44,1741094251,"~/harmonic.c"
--'  16  44  ~/harmonic.c
-|4,39,16,44,1741094251,"~/harmonic.c"
--'  16  44  ~/harmonic.c
-|4,39,16,44,1741094251,"~/harmonic.c"
--'  16  44  ~/harmonic.c
-|4,39,16,44,1741094251,"~/harmonic.c"
--'  16  44  ~/harmonic.c
-|4,39,16,44,1741094251,"~/harmonic.c"
--'  16  44  ~/harmonic.c
-|4,39,16,44,1741094251,"~/harmonic.c"
--'  16  44  ~/harmonic.c
-|4,39,16,44,1741094251,"~/harmonic.c"
--'  16  44  ~/harmonic.c
-|4,39,16,44,1741094251,"~/harmonic.c"
--'  16  44  ~/harmonic.c
-|4,39,16,44,1741094251,"~/harmonic.c"
--'  16  44  ~/harmonic.c
-|4,39,16,44,1741094251,"~/harmonic.c"
--'  16  44  ~/harmonic.c
-|4,39,16,44,1741094251,"~/harmonic.c"
--'  16  44  ~/harmonic.c
-|4,39,16,44,1741094251,"~/harmonic.c"
--'  16  44  ~/harmonic.c
-|4,39,16,44,1741094251,"~/harmonic.c"
--'  16  44  ~/harmonic.c
-|4,39,16,44,1741094251,"~/harmonic.c"
+-'  10  0  ~/sum_of_series.c
+|4,39,10,0,1741499017,"~/sum_of_series.c"
+-'  1  0  ~/sum_of_series.c
+|4,39,1,0,1741498989,"~/sum_of_series.c"
+-'  2  0  ~/square.c
+|4,39,2,0,1741498954,"~/square.c"
+-'  2  0  ~/square.c
+|4,39,2,0,1741498954,"~/square.c"
+-'  1  0  ~/square.c
+|4,39,1,0,1741498932,"~/square.c"
+-'  1  0  ~/square.c
+|4,39,1,0,1741498932,"~/square.c"
+-'  2  0  ~/even_odd_function.c
+|4,39,2,0,1741498867,"~/even_odd_function.c"
+-'  2  0  ~/even_odd_function.c
+|4,39,2,0,1741498867,"~/even_odd_function.c"
+-'  2  0  ~/even_odd_function.c
+|4,39,2,0,1741498867,"~/even_odd_function.c"
+-'  2  0  ~/even_odd_function.c
+|4,39,2,0,1741498867,"~/even_odd_function.c"
+-'  1  0  ~/even_odd_function.c
+|4,39,1,0,1741498847,"~/even_odd_function.c"
+-'  1  0  ~/even_odd_function.c
+|4,39,1,0,1741498847,"~/even_odd_function.c"
+-'  1  0  ~/even_odd_function.c
+|4,39,1,0,1741498847,"~/even_odd_function.c"
+-'  1  0  ~/even_odd_function.c
+|4,39,1,0,1741498847,"~/even_odd_function.c"
+-'  27  0  ~/armstrong.c
+|4,39,27,0,1741498785,"~/armstrong.c"
+-'  27  0  ~/armstrong.c
+|4,39,27,0,1741498785,"~/armstrong.c"
+-'  27  0  ~/armstrong.c
+|4,39,27,0,1741498785,"~/armstrong.c"
+-'  27  0  ~/armstrong.c
+|4,39,27,0,1741498785,"~/armstrong.c"
+-'  27  0  ~/armstrong.c
+|4,39,27,0,1741498785,"~/armstrong.c"
+-'  27  0  ~/armstrong.c
+|4,39,27,0,1741498785,"~/armstrong.c"
+-'  27  0  ~/armstrong.c
+|4,39,27,0,1741498785,"~/armstrong.c"
+-'  27  0  ~/armstrong.c
+|4,39,27,0,1741498785,"~/armstrong.c"
+-'  1  0  ~/armstrong.c
+|4,39,1,0,1741498687,"~/armstrong.c"
+-'  1  0  ~/armstrong.c
+|4,39,1,0,1741498687,"~/armstrong.c"
+-'  1  0  ~/armstrong.c
+|4,39,1,0,1741498687,"~/armstrong.c"
+-'  1  0  ~/armstrong.c
+|4,39,1,0,1741498687,"~/armstrong.c"
+-'  1  0  ~/armstrong.c
+|4,39,1,0,1741498687,"~/armstrong.c"
+-'  1  0  ~/armstrong.c
+|4,39,1,0,1741498687,"~/armstrong.c"
+-'  1  0  ~/armstrong.c
+|4,39,1,0,1741498687,"~/armstrong.c"
+-'  1  0  ~/armstrong.c
+|4,39,1,0,1741498687,"~/armstrong.c"
+-'  2  0  ~/prime_number.c
+|4,39,2,0,1741498636,"~/prime_number.c"
+-'  2  0  ~/prime_number.c
+|4,39,2,0,1741498636,"~/prime_number.c"
+-'  2  0  ~/prime_number.c
+|4,39,2,0,1741498636,"~/prime_number.c"
+-'  2  0  ~/prime_number.c
+|4,39,2,0,1741498636,"~/prime_number.c"
+-'  2  0  ~/prime_number.c
+|4,39,2,0,1741498636,"~/prime_number.c"
+-'  2  0  ~/prime_number.c
+|4,39,2,0,1741498636,"~/prime_number.c"
+-'  2  0  ~/prime_number.c
+|4,39,2,0,1741498636,"~/prime_number.c"
+-'  2  0  ~/prime_number.c
+|4,39,2,0,1741498636,"~/prime_number.c"
+-'  2  0  ~/prime_number.c
+|4,39,2,0,1741498636,"~/prime_number.c"
+-'  2  0  ~/prime_number.c
+|4,39,2,0,1741498636,"~/prime_number.c"
+-'  2  0  ~/prime_number.c
+|4,39,2,0,1741498636,"~/prime_number.c"
+-'  2  0  ~/prime_number.c
+|4,39,2,0,1741498636,"~/prime_number.c"
+-'  2  0  ~/prime_number.c
+|4,39,2,0,1741498636,"~/prime_number.c"
+-'  2  0  ~/prime_number.c
+|4,39,2,0,1741498636,"~/prime_number.c"
+-'  2  0  ~/prime_number.c
+|4,39,2,0,1741498636,"~/prime_number.c"
+-'  2  0  ~/prime_number.c
+|4,39,2,0,1741498636,"~/prime_number.c"
+-'  1  0  ~/prime_number.c
+|4,39,1,0,1741498609,"~/prime_number.c"
+-'  1  0  ~/prime_number.c
+|4,39,1,0,1741498609,"~/prime_number.c"
+-'  1  0  ~/prime_number.c
+|4,39,1,0,1741498609,"~/prime_number.c"
+-'  1  0  ~/prime_number.c
+|4,39,1,0,1741498609,"~/prime_number.c"
+-'  1  0  ~/prime_number.c
+|4,39,1,0,1741498609,"~/prime_number.c"
+-'  1  0  ~/prime_number.c
+|4,39,1,0,1741498609,"~/prime_number.c"
+-'  1  0  ~/prime_number.c
+|4,39,1,0,1741498609,"~/prime_number.c"
+-'  1  0  ~/prime_number.c
+|4,39,1,0,1741498609,"~/prime_number.c"
+-'  1  0  ~/prime_number.c
+|4,39,1,0,1741498609,"~/prime_number.c"
+-'  1  0  ~/prime_number.c
+|4,39,1,0,1741498609,"~/prime_number.c"
+-'  1  0  ~/prime_number.c
+|4,39,1,0,1741498609,"~/prime_number.c"
+-'  1  0  ~/prime_number.c
+|4,39,1,0,1741498609,"~/prime_number.c"
+-'  1  0  ~/prime_number.c
+|4,39,1,0,1741498609,"~/prime_number.c"
+-'  1  0  ~/prime_number.c
+|4,39,1,0,1741498609,"~/prime_number.c"
+-'  1  0  ~/prime_number.c
+|4,39,1,0,1741498609,"~/prime_number.c"
+-'  1  0  ~/prime_number.c
+|4,39,1,0,1741498609,"~/prime_number.c"
+-'  19  0  ~/series.c
+|4,39,19,0,1741498497,"~/series.c"
+-'  19  0  ~/series.c
+|4,39,19,0,1741498497,"~/series.c"
+-'  19  0  ~/series.c
+|4,39,19,0,1741498497,"~/series.c"
+-'  19  0  ~/series.c
+|4,39,19,0,1741498497,"~/series.c"
+-'  19  0  ~/series.c
+|4,39,19,0,1741498497,"~/series.c"
+-'  19  0  ~/series.c
+|4,39,19,0,1741498497,"~/series.c"
+-'  19  0  ~/series.c
+|4,39,19,0,1741498497,"~/series.c"
+-'  19  0  ~/series.c
+|4,39,19,0,1741498497,"~/series.c"
+-'  19  0  ~/series.c
+|4,39,19,0,1741498497,"~/series.c"
+-'  19  0  ~/series.c
+|4,39,19,0,1741498497,"~/series.c"
+-'  19  0  ~/series.c
+|4,39,19,0,1741498497,"~/series.c"
+-'  19  0  ~/series.c
+|4,39,19,0,1741498497,"~/series.c"
+-'  19  0  ~/series.c
+|4,39,19,0,1741498497,"~/series.c"
+-'  19  0  ~/series.c
+|4,39,19,0,1741498497,"~/series.c"
+-'  19  0  ~/series.c
+|4,39,19,0,1741498497,"~/series.c"
+-'  19  0  ~/series.c
+|4,39,19,0,1741498497,"~/series.c"
+-'  19  0  ~/series.c
+|4,39,19,0,1741498497,"~/series.c"
+-'  19  0  ~/series.c
+|4,39,19,0,1741498497,"~/series.c"
+-'  19  0  ~/series.c
+|4,39,19,0,1741498497,"~/series.c"
+-'  19  0  ~/series.c
+|4,39,19,0,1741498497,"~/series.c"
+-'  19  0  ~/series.c
+|4,39,19,0,1741498497,"~/series.c"
+-'  19  0  ~/series.c
+|4,39,19,0,1741498497,"~/series.c"
+-'  19  0  ~/series.c
+|4,39,19,0,1741498497,"~/series.c"
+-'  19  0  ~/series.c
+|4,39,19,0,1741498497,"~/series.c"
+-'  19  0  ~/series.c
+|4,39,19,0,1741498497,"~/series.c"
+-'  19  0  ~/series.c
+|4,39,19,0,1741498497,"~/series.c"
+-'  19  0  ~/series.c
+|4,39,19,0,1741498497,"~/series.c"
+-'  19  0  ~/series.c
+|4,39,19,0,1741498497,"~/series.c"
+-'  19  0  ~/series.c
+|4,39,19,0,1741498497,"~/series.c"
+-'  19  0  ~/series.c
+|4,39,19,0,1741498497,"~/series.c"
+-'  19  0  ~/series.c
+|4,39,19,0,1741498497,"~/series.c"
+-'  19  0  ~/series.c
+|4,39,19,0,1741498497,"~/series.c"
+-'  1  0  ~/series.c
+|4,39,1,0,1741498469,"~/series.c"
+-'  1  0  ~/series.c
+|4,39,1,0,1741498469,"~/series.c"
+-'  1  0  ~/series.c
+|4,39,1,0,1741498469,"~/series.c"
+-'  1  0  ~/series.c
+|4,39,1,0,1741498469,"~/series.c"
+-'  1  0  ~/series.c
+|4,39,1,0,1741498469,"~/series.c"
+-'  1  0  ~/series.c
+|4,39,1,0,1741498469,"~/series.c"
 
 # History of marks within files (newest to oldest):
 
-> ~/2.c
-	*	1741450067	0
-	"	6	0
-	^	6	1
-	.	6	0
-	+	1	0
-	+	4	23
-	+	6	0
-
-> ~/1.c
-	*	1741450009	0
-	"	1	0
-	^	6	11
+> ~/sum_of_series.c
+	*	1741499015	0
+	"	10	0
+	^	10	0
 	.	11	0
+	+	22	1
+	+	3	0
 	+	11	0
 
-> ~/l.c
-	*	1741447986	0
-	"	1	0
-	^	1	0
-	.	2	0
-	+	1	262
-	+	1	44
-	+	2	0
+> ~/square.c
+	*	1741498953	0
+	"	2	0
+	^	2	0
+	.	3	0
+	+	16	1
+	+	3	0
+
+> ~/even_odd_function.c
+	*	1741498866	0
+	"	2	0
+	^	2	0
+	.	3	0
+	+	20	1
+	+	3	0
+
+> ~/armstrong.c
+	*	1741498783	0
+	"	27	0
+	^	27	0
+	.	10	1
+	+	1	1
 	+	1	0
-	+	2	0
+	+	62	0
+	+	60	1
+	+	31	0
+	+	3	0
+	+	10	1
+
+> ~/prime_number.c
+	*	1741498634	0
+	"	2	0
+	^	2	0
+	.	3	0
+	+	28	1
+	+	3	0
+
+> ~/series.c
+	*	1741498496	0
+	"	19	0
+	^	19	0
+	.	18	1
+	+	1	16
+	+	20	0
+	+	18	1
+
+> ~/compound_interest.c
+	*	1741498337	0
+	"	26	5
+	^	26	6
+	.	26	6
+	+	1	1
+	+	1	0
+	+	35	0
+	+	33	1
+	+	9	7
+	+	17	7
+	+	26	6
+
+> ~/average.c
+	*	1741497765	0
+	"	12	18
+	^	12	19
+	.	12	19
+	+	26	1
+	+	12	19
+
+> ~/duplicate_number.c
+	*	1741497682	0
+	"	3	22
+	^	3	23
+	.	3	22
+	+	30	1
+	+	14	0
+	+	3	22
+
+> ~/fibonacci_series.c
+	*	1741497540	0
+	"	19	0
+	^	19	0
+	.	18	1
+	+	18	1
 
 > ~/palindrome.c
-	*	1741156478	0
-	"	7	32
-	^	21	44
-	.	21	43
-	+	24	0
-	+	4	24
-	+	14	9
-	+	10	12
+	*	1741497450	0
+	"	19	1
+	^	19	3
+	.	19	3
+	+	51	0
+	+	31	24
+	+	41	9
+	+	37	12
+	+	33	4
+	+	39	3
+	+	41	22
+	+	42	25
+	+	43	19
+	+	44	4
+	+	45	14
+	+	46	40
+	+	48	43
+	+	27	1
 	+	6	4
-	+	12	3
-	+	14	22
-	+	15	25
-	+	16	19
-	+	17	4
-	+	18	14
-	+	19	40
-	+	21	43
-
-> ~/harmonic.c
-	*	1741094250	0
-	"	16	44
-	^	16	45
-	.	16	44
-	+	18	0
-	+	5	20
-	+	8	0
-	+	15	9
-	+	16	0
-	+	17	0
-	+	14	17
-	+	16	44
-
-> ~/cube.c
-	*	1741093992	0
-	"	6	19
-	^	6	20
-	.	7	0
-	+	13	0
-	+	5	0
-	+	7	0
+	+	12	4
+	+	19	3
 
 > ~/natural.c
-	*	1741093776	0
+	*	1741497295	0
 	"	12	0
 	^	12	1
 	.	12	0
@@ -500,7 +672,7 @@
 	+	12	0
 
 > ~/natural
-	*	1741093484	0
+	*	1741497287	0
 	"	12	0
 	^	10	76
 	.	11	0
@@ -515,6 +687,274 @@
 	+	10	0
 	+	8	16
 	+	11	0
+
+> ~/even.c
+	*	1741497255	0
+	"	10	2
+	^	10	3
+	.	10	3
+	+	18	1
+	+	6	2
+	+	10	3
+
+> ~/harmonic.c
+	*	1741497239	0
+	"	16	44
+	^	16	45
+	.	16	44
+	+	18	0
+	+	5	20
+	+	8	0
+	+	15	9
+	+	16	0
+	+	17	0
+	+	14	17
+	+	16	44
+
+> ~/cube.c
+	*	1741497216	0
+	"	6	19
+	^	6	20
+	.	7	0
+	+	13	0
+	+	5	0
+	+	7	0
+
+> ~/month_number.c
+	*	1741497134	0
+	"	24	2
+	^	24	3
+	.	10	3
+	+	53	1
+	+	6	2
+	+	10	3
+
+> ~/geometrical_shapes.c
+	*	1741497058	0
+	"	16	3
+	^	16	4
+	.	16	4
+	+	41	1
+	+	8	4
+	+	16	4
+
+> ~/geometrical_shapes
+	*	1741497025	0
+	"	1	0
+	^	1	0
+	.	1	0
+	+	1	2
+	+	2	0
+	+	1	0
+
+> ~/simple_calculation.c
+	*	1741496918	0
+	"	20	1
+	^	20	2
+	.	20	2
+	+	47	1
+	+	7	4
+	+	16	4
+	+	20	2
+
+> ~/password.c
+	*	1741496832	0
+	"	19	6
+	^	19	7
+	.	19	7
+	+	30	1
+	+	6	3
+	+	10	3
+	+	14	3
+	+	19	7
+
+> ~/positive.c
+	*	1741496663	0
+	"	14	5
+	^	14	6
+	.	14	6
+	+	27	1
+	+	6	3
+	+	10	3
+	+	14	6
+
+> ~/number.c
+	*	1741496581	0
+	"	25	3
+	^	25	4
+	.	26	0
+	+	29	1
+	+	6	4
+	+	10	3
+	+	26	0
+
+> ~/division.c
+	*	1741496486	0
+	"	33	2
+	^	33	3
+	.	33	3
+	+	44	1
+	+	9	3
+	+	19	3
+	+	23	4
+	+	33	3
+
+> ~/electricity_bill.c
+	*	1741496352	0
+	"	39	1
+	^	39	2
+	.	39	2
+	+	47	1
+	+	8	4
+	+	17	2
+	+	30	2
+	+	35	0
+	+	39	2
+
+> ~/temperature.c
+	*	1741496219	0
+	"	10	1
+	^	10	2
+	.	10	2
+	+	26	1
+	+	6	4
+	+	10	2
+
+> ~/year.c
+	*	1741496133	0
+	"	8	22
+	^	8	23
+	.	9	0
+	+	16	1
+	+	6	3
+	+	9	0
+
+> ~/traingle.c
+	*	1741495809	0
+	"	16	1
+	^	16	2
+	.	16	2
+	+	24	1
+	+	6	4
+	+	16	2
+
+> ~/larger.c
+	*	1741495705	0
+	"	17	4
+	^	17	5
+	.	18	0
+	+	21	1
+	+	6	3
+	+	10	4
+	+	18	0
+
+> ~/vote.c
+	*	1741495572	0
+	"	10	3
+	^	10	4
+	.	10	4
+	+	18	1
+	+	6	4
+	+	10	4
+
+> ~/integer.c
+	*	1741495363	0
+	"	12	0
+	^	12	1
+	.	12	1
+	+	20	1
+	+	5	3
+	+	12	1
+
+> ~/rectangle.c
+	*	1741495153	0
+	"	15	3
+	^	15	4
+	.	16	0
+	+	19	1
+	+	6	3
+	+	13	4
+	+	16	0
+
+> ~/centigrade.c
+	*	1741494990	0
+	"	8	28
+	^	8	29
+	.	9	0
+	+	13	1
+	+	6	4
+	+	10	0
+	+	9	0
+
+> ~/kilometer.c
+	*	1741494875	0
+	"	10	25
+	^	10	26
+	.	11	0
+	+	14	1
+	+	5	3
+	+	9	3
+	+	11	0
+
+> ~/name.c
+	*	1741494692	0
+	"	13	31
+	^	13	32
+	.	14	0
+	+	17	0
+	+	6	0
+	+	14	0
+
+> ~/minutes.c
+	*	1741494512	0
+	"	12	42
+	^	12	43
+	.	13	0
+	+	16	1
+	+	6	0
+	+	11	3
+	+	13	0
+
+> ~/Rectangle.c
+	*	1741494224	0
+	"	10	8
+	^	10	6
+	.	10	5
+	+	11	0
+	+	4	21
+	+	6	22
+	+	5	12
+	+	7	12
+	+	1	1
+	+	3	8
+	+	10	5
+
+> ~/2.c
+	*	1741450067	0
+	"	6	0
+	^	6	1
+	.	6	0
+	+	1	0
+	+	4	23
+	+	6	0
+
+> ~/1.c
+	*	1741450009	0
+	"	1	0
+	^	6	11
+	.	11	0
+	+	11	0
+
+> ~/l.c
+	*	1741447986	0
+	"	1	0
+	^	1	0
+	.	2	0
+	+	1	262
+	+	1	44
+	+	2	0
+	+	1	0
+	+	2	0
 
 > ~/5.c
 	*	1740214921	0
@@ -548,20 +988,6 @@
 	+	4	22
 	+	10	25
 	+	13	0
-
-> ~/Rectangle.c
-	*	1740196922	0
-	"	10	8
-	^	10	6
-	.	10	5
-	+	11	0
-	+	4	21
-	+	6	22
-	+	5	12
-	+	7	12
-	+	1	1
-	+	3	8
-	+	10	5
 
 > ~/new.c
 	*	1740127814	0

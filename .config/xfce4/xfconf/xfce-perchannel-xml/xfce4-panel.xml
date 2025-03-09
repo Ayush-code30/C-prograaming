@@ -117,6 +117,7 @@
       <property name="square-icons" type="bool" value="true"/>
       <property name="symbolic-icons" type="bool" value="false"/>
       <property name="known-legacy-items" type="array">
+        <value type="string" value="clipman"/>
         <value type="string" value="networkmanager applet"/>
         <value type="string" value="ethernet network connection “wired connection 1” active"/>
       </property>
